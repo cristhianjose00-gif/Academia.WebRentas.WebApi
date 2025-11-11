@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36616.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.WebRentas.WebApi", "Academia.WebRentas.WebApi.csproj", "{5CBF7A03-38D2-46E5-886C-7E136ECD501F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rentas.UnitTest", "..\Rentas.UnitTest\Rentas.UnitTest.csproj", "{56965077-FC0B-4676-AAF4-4226426EEEA1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CBF7A03-38D2-46E5-886C-7E136ECD501F} = {5CBF7A03-38D2-46E5-886C-7E136ECD501F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CBF7A03-38D2-46E5-886C-7E136ECD501F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CBF7A03-38D2-46E5-886C-7E136ECD501F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CBF7A03-38D2-46E5-886C-7E136ECD501F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CBF7A03-38D2-46E5-886C-7E136ECD501F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56965077-FC0B-4676-AAF4-4226426EEEA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56965077-FC0B-4676-AAF4-4226426EEEA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56965077-FC0B-4676-AAF4-4226426EEEA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56965077-FC0B-4676-AAF4-4226426EEEA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3567F183-1C27-4212-A5D5-AA7DFFE58BBA}
+	EndGlobalSection
+EndGlobal
