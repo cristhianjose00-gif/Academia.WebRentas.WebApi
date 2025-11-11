@@ -1,4 +1,5 @@
-﻿using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
+﻿using Academia.WebRentas.WebApi._Common;
+using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi._Features.ContratosRenta;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
@@ -27,15 +28,9 @@ namespace Academia.WebRentas.WebApi.Controllers
         [HttpPost("InsertarContratoRenta")]
         public IActionResult InsertarContrato([FromBody] InsertarContratoDto dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
 
             var resultado = _service.InsertarContrato(dto);
-
-            if (resultado.Ok)
-                return Ok(resultado);
-
-            return BadRequest(resultado);        
+            return this.ActionResultFrom(resultado);
         }
         [HttpPut("ActualizarContratoRenta")]
         public IActionResult ActualizarContrato([FromBody] ActualizarContratoDto dto)
@@ -48,8 +43,8 @@ namespace Academia.WebRentas.WebApi.Controllers
         [HttpPut("InactivarContrato")]
         public IActionResult InactivarContrato([FromBody] InactivarContratoDto dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState);
 
             var resultado = _service.InactivarContrato(dto);
 

@@ -41,6 +41,7 @@ namespace Academia.WebRentas.WebApi._Common.DomainRequirement
         }
 
         public bool EsValido() => ObtenerErrores().Count == 0;  
+
         
     }
 }

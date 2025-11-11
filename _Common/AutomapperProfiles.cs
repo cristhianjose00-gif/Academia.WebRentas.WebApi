@@ -13,7 +13,9 @@ namespace Academia.WebRentas.WebApi._Common
             CreateMap<ActualizarContratoDto, ContratoRenta>();
             CreateMap<ContratoRenta, ObtenerContratoDto>().ForMember(entidadDto => entidadDto.NombreDeProveedor, entidad => entidad.MapFrom(x => x.Proveedor.NombreDeProveedor))
                 .ForMember(entidadDto => entidadDto.MoneadaNombre, entidad => entidad.MapFrom(x => x.Moneda.NombreMoneda)).ReverseMap();
-            CreateMap<InsertarContratoDto, ContratoRenta>();
+            CreateMap<InsertarContratoDto, ContratoRenta>()
+            .ForMember(dest => dest.FechaAgrega, opt => opt.MapFrom(src => DateTime.Now))
+            .ForMember(dest => dest.Activo, opt => opt.MapFrom(src => true));
 
             CreateMap<ActualizarSucursalDto, Sucursal>();
             CreateMap<InsertarSucursalDto, Sucursal>();
