@@ -39,32 +39,15 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
             }
 
         }
-        public Respuesta<InsertarContratoDto> InsertarContrato(InsertarContratoDto dto)
+        public Respuesta<InsertarContratoDto> InsertarContrato(InsertarContratoDto insertarContratoDto)
         {
             try
             {
-                var contrato = _mapper.Map<ContratoRenta>(dto);
+                ContratoRenta contrato = _mapper.Map<ContratoRenta>(insertarContratoDto);
 
-                //Desde aca
-                bool proveedorExiste = _unitOfWork.Repository<Proveedor>()
-                    .AsQueryable()
-                    .Any(p => p.ProveedorID == dto.ProveedorID);
+                ContratoRentaDomainRequirement requirements = CrearRequisitosContrato(insertarContratoDto);
 
-                bool monedaExiste = _unitOfWork.Repository<Moneda>()
-                    .AsQueryable()
-                    .Any(m => m.MonedaID == dto.MonedaID);
-
-                bool numeroContratoUnico = !_unitOfWork.Repository<ContratoRenta>()
-                    .AsQueryable()
-                    .Any(c => c.NumeroContrato == dto.NumeroContrato);
-
-                var requirements = ContratoRentaDomainRequirement.Fill(
-                    proveedorExiste,
-                    monedaExiste,
-                    numeroContratoUnico
-                );
-                //Agregar a un metodo aparte
-                var validacion = _rentaDomain.ValidarContrato(contrato, requirements);
+                Respuesta<ContratoRenta> validacion = _rentaDomain.ValidarContrato(contrato, requirements);
 
                 if (!validacion.Ok)
                 {
@@ -75,12 +58,20 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                 }
 
                 _unitOfWork.Repository<ContratoRenta>().Add(contrato);
-                _unitOfWork.SaveChanges();
 
-                return Respuesta.Success(dto, Exito.Creado, ((int)EnumMensajesError.Succes).ToString());
+
+                if (!_unitOfWork.SaveChanges())
+                {
+                    return Respuesta.Fault<InsertarContratoDto>(
+                    Fallo.CreacionFallida,
+                    ((int)EnumMensajesError.InternarServerError).ToString());
+                }
+
+                return Respuesta.Success(insertarContratoDto, Exito.Creado, ((int)EnumMensajesError.Succes).ToString());
             }
-            catch (Exception)
+            catch (Exception ) 
             {
+
                 return Respuesta.Fault<InsertarContratoDto>(
                     Fallo.CreacionFallida,
                     ((int)EnumMensajesError.InternarServerError).ToString()
@@ -159,7 +150,26 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                 return Respuesta.Fault<InactivarContratoDto>(Fallo.OperacionFallida, EnumMensajesError.InternarServerError.ToString());
             }
         }
+        private ContratoRentaDomainRequirement CrearRequisitosContrato(InsertarContratoDto dto)
+        {
+            bool proveedorExiste = _unitOfWork.Repository<Proveedor>()
+                .AsQueryable()
+                .Any(p => p.ProveedorID == dto.ProveedorID);
 
+            bool monedaExiste = _unitOfWork.Repository<Moneda>()
+                .AsQueryable()
+                .Any(m => m.MonedaID == dto.MonedaID);
+
+            bool numeroContratoUnico = !_unitOfWork.Repository<ContratoRenta>()
+                .AsQueryable()
+                .Any(c => c.NumeroContrato == dto.NumeroContrato);
+
+            return ContratoRentaDomainRequirement.Fill(
+                proveedorExiste,
+                monedaExiste,
+                numeroContratoUnico
+            );
+        }
 
     }
 }
