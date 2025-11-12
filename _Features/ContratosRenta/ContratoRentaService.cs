@@ -23,22 +23,35 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
             _mapper = mapper;
             _rentaDomain = contratoRentaDomain;
         }
-        public Respuesta<List<ObtenerContratoDto>> ObtenerContratoRenta()
+        public Respuesta<List<ObtenerContratoDto>> ObtenerContratoRenta(int pagina, int tamanoPagina)
         {
             try
             {
-                var contratoRentas = _unitOfWork.Repository<ContratoRenta>().AsQueryable().Include(x => x.Moneda).Include(x => x.Proveedor).Where(x => x.Activo).ToList();
+
+                int skip = (pagina - 1) * tamanoPagina;
+
+                var query = _unitOfWork.Repository<ContratoRenta>()
+                    .AsQueryable()
+                    .Include(x => x.Moneda)
+                    .Include(x => x.Proveedor)
+                    .Where(x => x.Activo)
+                    .OrderBy(x => x.ContratoID) 
+                    .Skip(skip)
+                    .Take(tamanoPagina);
+
+                var contratoRentas = query.ToList();
+
                 var contratoRentasDto = _mapper.Map<List<ObtenerContratoDto>>(contratoRentas);
+
+
                 return Respuesta.Success(contratoRentasDto, Exito.OperacionExitosa, EnumMensajesError.Succes.ToString());
-
             }
-            catch (Exception)
-
+            catch (Exception )
             {
                 return Respuesta.Fault<List<ObtenerContratoDto>>(Fallo.OperacionFallida, EnumMensajesError.InternarServerError.ToString());
             }
-
         }
+        
         public Respuesta<InsertarContratoDto> InsertarContrato(InsertarContratoDto insertarContratoDto)
         {
             try

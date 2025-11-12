@@ -5,7 +5,7 @@ namespace Academia.WebRentas.WebApi._Common.Service
 {
     public interface IContratoRenta
     {
-        public Respuesta<List<ObtenerContratoDto>> ObtenerContratoRenta();
+        public Respuesta<List<ObtenerContratoDto>> ObtenerContratoRenta(int pagina, int tamanoPagina);
         public Respuesta<InsertarContratoDto> InsertarContrato(InsertarContratoDto dto);
         public Respuesta<ActualizarContratoDto> ActualizarContrato(ActualizarContratoDto dto);
         public Respuesta<InactivarContratoDto> InactivarContrato(InactivarContratoDto dto);

@@ -17,12 +17,22 @@ namespace Academia.WebRentas.WebApi.Controllers
         }
 
         [HttpGet("ObtenerContratosRenta")]
-
-        public IActionResult ObtenerContratosRenta()
+        public IActionResult ObtenerContratosRenta(
+           [FromQuery] int pagina = 1 
+       )
         {
+            const int tamanoPaginaFijo = 10;
 
-            return Ok(_service.ObtenerContratoRenta());
+            var respuestaPaginada = _service.ObtenerContratoRenta(pagina, tamanoPaginaFijo);
+
+            if (respuestaPaginada.Ok)
+            {
+                return Ok(respuestaPaginada.Data);
+            }
+
+            return StatusCode(500, respuestaPaginada.Mensaje);
         }
+
         [HttpPost("InsertarContratoRenta")]
         public IActionResult InsertarContrato([FromBody] InsertarContratoDto dto)
         {
