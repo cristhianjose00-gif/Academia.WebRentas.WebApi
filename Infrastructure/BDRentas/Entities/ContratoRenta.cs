@@ -40,5 +40,4 @@
         public virtual ICollection<Sucursal> Sucursales { get; set; } = new List<Sucursal>();
     }
 
-
 }

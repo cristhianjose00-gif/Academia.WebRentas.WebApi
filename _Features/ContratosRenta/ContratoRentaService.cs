@@ -47,6 +47,7 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
 
                 ContratoRentaDomainRequirement requirements = CrearRequisitosContrato(insertarContratoDto);
 
+                //var validacion = _rentaDomain.ValidarContrato(contrato, requirements);
                 Respuesta<ContratoRenta> validacion = _rentaDomain.ValidarContrato(contrato, requirements);
 
                 if (!validacion.Ok)

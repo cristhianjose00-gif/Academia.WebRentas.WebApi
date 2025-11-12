@@ -10,11 +10,18 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
     {
         public Respuesta<ContratoRenta> ValidarContrato(ContratoRenta contratoRenta, ContratoRentaDomainRequirement contratoRentaDomainRequirement)
         {
+            DateTime fechaAntiguedadLimite = DateTime.Today.AddYears(-3);
+            DateTime FechaFuturaLimite = DateTime.Today.AddYears(+10);
+
+            if (!contratoRentaDomainRequirement.EsValido())
+                return Respuesta<ContratoRenta>.Fault(String.Join(" ", contratoRentaDomainRequirement.ObtenerErrores()),
+                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+
             if (string.IsNullOrWhiteSpace(contratoRenta.NumeroContrato))
                 return Respuesta<ContratoRenta>.Fault(Fallo.NumeroContratoRequerido,
                     ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
 
-            if (contratoRenta.NumeroContrato.Length > 50)
+            if (contratoRenta.NumeroContrato.Length > 20)
                 return Respuesta<ContratoRenta>.Fault(Fallo.ExcesoCaracteres,
                     ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
 
@@ -30,9 +37,14 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                 return Respuesta<ContratoRenta>.Fault(Fallo.MontosErroneos,
                     ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
 
-            if (contratoRenta.FechaInicio < new DateTime(2020, 1, 1))
-                return Respuesta<ContratoRenta>.Fault(Fallo.FechaAntigua,
+            if (contratoRenta.FechaInicio < fechaAntiguedadLimite)
+                return Respuesta<ContratoRenta>.Fault(Fallo.FechaAntigua.Replace("@anio", fechaAntiguedadLimite.Year.ToString()),
                     ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+
+            if (contratoRenta.FechaFin > FechaFuturaLimite)
+                return Respuesta<ContratoRenta>.Fault(Fallo.FechaFutura.Replace("@anio", FechaFuturaLimite.Year.ToString()),
+                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+
 
             if (contratoRenta.FechaInicio > contratoRenta.FechaFin)
                 return Respuesta<ContratoRenta>.Fault(Fallo.FechasErroneas,
@@ -46,9 +58,6 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                 return Respuesta<ContratoRenta>.Fault(Fallo.MontosErroneosContrato,
                     ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
 
-            if (!contratoRentaDomainRequirement.EsValido())
-                return Respuesta<ContratoRenta>.Fault(String.Join(" ", contratoRentaDomainRequirement.ObtenerErrores()),
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
 
             return Respuesta<ContratoRenta>.Success(contratoRenta,
                 Exito.OperacionExitosa,

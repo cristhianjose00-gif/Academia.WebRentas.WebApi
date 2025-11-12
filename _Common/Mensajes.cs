@@ -22,12 +22,13 @@
             public const string DatosInvalidos = "Los datos proporcionados no son válidos";
             public const string ErrorInterno = "Ocurrió un error interno en el servidor";
             public const string NumeroContratoRequerido = "El número de contrato es requerido.";
-            public const string ExcesoCaracteres = "El número de contrato no debe exceder los 50 caracteres.";
+            public const string ExcesoCaracteres = "El número de contrato no debe exceder los 20 caracteres.";
             public const string CampoValido = "Debe seleccionar un @Campo válida.";
             public const string MontoValido = "El monto del contrato debe ser mayor que cero.";
             public const string MontoMensual = "El monto mensual debe ser mayor que cero.";
             public const string MontosErroneos = "El monto mensual no puede ser mayor al monto total del contrato.";
-            public const string FechaAntigua = "La fecha de inicio no puede ser anterior al año 2020.";
+            public const string FechaAntigua = "La fecha de inicio no puede ser anterior al @anio.";
+            public const string FechaFutura = "La fecha de final no puede ser mayor al @anio.";
             public const string FechasErroneas = "La fecha fin no puede ser menor a la fecha de inicio.";
             public const string MontoNegativo = "El monto total debe ser mayor que cero.";
             public const string MontosErroneosContrato = "El monto total no puede ser menor que el monto del contrato.";

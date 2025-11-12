@@ -18,7 +18,6 @@
 
         public DateTime FechaFin { get; set; }
 
-        public bool Activo { get; set; } = true;
         public string UsuarioAgrega { get; set; } = null!;
     }
 
