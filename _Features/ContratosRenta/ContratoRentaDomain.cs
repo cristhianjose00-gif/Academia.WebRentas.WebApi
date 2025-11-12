@@ -1,9 +1,7 @@
 ﻿using Academia.WebRentas.WebApi._Common;
 using Academia.WebRentas.WebApi._Common.DomainRequirement;
-using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Application.Core.Standard.DTOs;
-using System.Text;
 using static Academia.WebRentas.WebApi._Common.Mensajes;
 
 namespace Academia.WebRentas.WebApi._Features.ContratosRenta
@@ -47,6 +45,7 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
             if (contratoRenta.MontoTotal < contratoRenta.MontoContrato)
                 return Respuesta<ContratoRenta>.Fault(Fallo.MontosErroneosContrato,
                     ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+
             if (!contratoRentaDomainRequirement.EsValido())
                 return Respuesta<ContratoRenta>.Fault(String.Join(" ", contratoRentaDomainRequirement.ObtenerErrores()),
                     ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());

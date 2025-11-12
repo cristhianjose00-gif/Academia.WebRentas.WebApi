@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace Academia.WebRentas.WebApi._Common.Dtos.SucursalDto
+﻿namespace Academia.WebRentas.WebApi._Common.Dtos.SucursalDto
 {
     public class InsertarSucursalDto
     {

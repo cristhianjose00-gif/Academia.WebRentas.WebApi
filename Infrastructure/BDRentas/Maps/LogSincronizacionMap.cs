@@ -1,5 +1,4 @@
-﻿using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
-using EFCoreLab3.Infraestructura;
+﻿using EFCoreLab3.Infraestructura;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,6 +18,6 @@ namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Maps
             builder.Property(x => x.UsuarioAgrega).HasColumnName("UsuarioAgrega");
             builder.Property(x => x.FechaAgrega).HasColumnName("FechaCreacion");
         }
-    
+
     }
 }

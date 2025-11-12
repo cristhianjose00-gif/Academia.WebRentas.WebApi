@@ -10,7 +10,7 @@ namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Maps
         public void Configure(EntityTypeBuilder<Moneda> builder)
         {
             builder.ToTable("Monedas");
-            builder.HasKey(x =>x.MonedaID);
+            builder.HasKey(x => x.MonedaID);
             builder.Property(x => x.MonedaID).HasColumnName("MonedaID");
             builder.Property(x => x.NombreMoneda).HasColumnName("NombreMoneda");
             builder.Property(x => x.Simbolo).HasColumnName("Simbolo");
@@ -22,7 +22,7 @@ namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Maps
             builder.Property(x => x.UsuarioModifica).HasColumnName("UsuarioModifica");
             builder.Property(x => x.FechaModifica).HasColumnName("FechaModifica");
 
-            builder.HasOne(x => x.TasaDeCambio).WithMany(x=>x.Moneda).HasForeignKey(x => x.TasaDeCambioID).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.TasaDeCambio).WithMany(x => x.Moneda).HasForeignKey(x => x.TasaDeCambioID).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

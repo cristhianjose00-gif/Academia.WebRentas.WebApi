@@ -1,18 +1,13 @@
 ﻿using Academia.WebRentas.WebApi._Common;
-using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
 using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi.Infrastructure;
-using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using AutoMapper;
 using Farsiman.Application.Core.Standard.DTOs;
 using Farsiman.Domain.Core.Standard.Repositories;
-using Farsiman.Exceptions;
 using FluentValidation.Results;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.Contracts;
 using static Academia.WebRentas.WebApi._Common.Mensajes;
 
 namespace Academia.WebRentas.WebApi._Features.Sucursales

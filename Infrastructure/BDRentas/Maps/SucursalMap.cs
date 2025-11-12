@@ -24,6 +24,6 @@ namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Maps
             builder.HasOne(x => x.Contrato).WithMany(m => m.Sucursales).HasForeignKey(x => x.ContratoID).OnDelete(DeleteBehavior.Restrict);
         }
     }
-    
-    
+
+
 }

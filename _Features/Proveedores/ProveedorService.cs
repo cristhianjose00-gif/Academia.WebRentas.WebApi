@@ -28,5 +28,5 @@ namespace Academia.WebRentas.WebApi._Features.Proveedores
             }
         }
     }
-    
+
 }

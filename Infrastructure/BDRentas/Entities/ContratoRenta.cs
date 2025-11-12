@@ -1,7 +1,4 @@
-﻿using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
-using FluentValidation;
-
-namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities
+﻿namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities
 {
     public class ContratoRenta
     {
@@ -42,6 +39,6 @@ namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities
 
         public virtual ICollection<Sucursal> Sucursales { get; set; } = new List<Sucursal>();
     }
-   
-    
+
+
 }

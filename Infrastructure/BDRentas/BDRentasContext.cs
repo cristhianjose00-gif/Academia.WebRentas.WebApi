@@ -37,8 +37,8 @@ namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas
             modelBuilder.ApplyConfiguration(new DocumentoMap());
             modelBuilder.ApplyConfiguration(new SucursalMap());
             modelBuilder.ApplyConfiguration(new LogSincronizacionMap());
-        }   
-        
-        
+        }
+
+
     }
 }

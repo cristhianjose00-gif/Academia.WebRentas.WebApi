@@ -10,7 +10,6 @@ using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
 using Farsiman.Extensions.Configuration;
 using Farsiman.Infraestructure.Core.AspNetCore.Extensions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,7 +62,7 @@ var app = builder.Build();
 app.UseSwagger();
 if (app.Environment.IsDevelopment())
 {
-    
+
     app.UseSwaggerUI();
 
 

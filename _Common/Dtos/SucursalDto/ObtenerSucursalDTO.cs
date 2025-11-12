@@ -1,6 +1,4 @@
-﻿using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
-
-namespace Academia.WebRentas.WebApi._Common.Dtos.SucursalDto
+﻿namespace Academia.WebRentas.WebApi._Common.Dtos.SucursalDto
 {
     public class ObtenerSucursalDTO
     {

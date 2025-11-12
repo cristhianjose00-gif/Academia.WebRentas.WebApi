@@ -1,6 +1,4 @@
-﻿using Academia.WebRentas.WebApi._Common.Dtos;
-using Academia.WebRentas.WebApi._Features.PagoRentas;
-using Farsiman.Exceptions;
+﻿using Academia.WebRentas.WebApi._Features.PagoRentas;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebRentas.WebApi.Controllers

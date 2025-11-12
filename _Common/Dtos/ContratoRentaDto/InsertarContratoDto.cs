@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto
+﻿namespace Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto
 {
     public class InsertarContratoDto
     {

@@ -2,8 +2,6 @@
 using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi._Features.ContratosRenta;
-using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebRentas.WebApi.Controllers

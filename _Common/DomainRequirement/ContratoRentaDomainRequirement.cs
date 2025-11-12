@@ -1,6 +1,4 @@
-﻿using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
-using Farsiman.Application.Core.Standard.DTOs;
-using static Academia.WebRentas.WebApi._Common.Mensajes;
+﻿using static Academia.WebRentas.WebApi._Common.Mensajes;
 
 namespace Academia.WebRentas.WebApi._Common.DomainRequirement
 {
@@ -13,7 +11,7 @@ namespace Academia.WebRentas.WebApi._Common.DomainRequirement
         public static ContratoRentaDomainRequirement Fill(
             bool proveedorExiste,
             bool monedaExiste,
-            bool numeroContratoUnico 
+            bool numeroContratoUnico
         )
         {
             return new ContratoRentaDomainRequirement
@@ -40,8 +38,8 @@ namespace Academia.WebRentas.WebApi._Common.DomainRequirement
             return errores;
         }
 
-        public bool EsValido() => ObtenerErrores().Count == 0;  
+        public bool EsValido() => ObtenerErrores().Count == 0;
 
-        
+
     }
 }

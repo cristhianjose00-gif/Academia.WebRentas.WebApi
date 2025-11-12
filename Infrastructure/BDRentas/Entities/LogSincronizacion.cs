@@ -1,6 +1,4 @@
 ﻿using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
-using System;
-using System.Collections.Generic;
 
 namespace EFCoreLab3.Infraestructura;
 

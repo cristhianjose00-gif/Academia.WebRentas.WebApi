@@ -1,5 +1,4 @@
 ﻿using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
-using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Application.Core.Standard.DTOs;
 
 namespace Academia.WebRentas.WebApi._Common.Service

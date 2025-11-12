@@ -18,6 +18,6 @@ namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Maps
             builder.Property(x => x.AgenteModifica).HasColumnName("AgenteModifica");
             builder.Property(x => x.FechaModifica).HasColumnName("FechaModifica");
         }
-    
+
     }
 }

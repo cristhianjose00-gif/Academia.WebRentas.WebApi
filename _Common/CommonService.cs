@@ -1,10 +1,7 @@
 ﻿using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Exceptions;
-using Microsoft.AspNetCore.Identity.Data;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 
 namespace Academia.WebRentas.WebApi._Common
 {

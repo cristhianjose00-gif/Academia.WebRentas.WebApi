@@ -1,6 +1,4 @@
-﻿using Academia.WebRentas.WebApi._Features.Proveedores;
-using Academia.WebRentas.WebApi._Features.Servicios;
-using Microsoft.AspNetCore.Http;
+﻿using Academia.WebRentas.WebApi._Features.Servicios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebRentas.WebApi.Controllers

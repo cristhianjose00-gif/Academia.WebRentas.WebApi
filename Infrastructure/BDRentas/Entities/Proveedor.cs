@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities
+﻿namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities
 {
     public class Proveedor
     {
