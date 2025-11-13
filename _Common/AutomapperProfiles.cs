@@ -2,14 +2,17 @@
 using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using AutoMapper;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi._Common
 {
+    [ExcludeFromCodeCoverage]
     public class AutomapperProfiles : Profile
     {
         public AutomapperProfiles()
         {
-            CreateMap<ActualizarContratoDto, ContratoRenta>();
+            CreateMap<ActualizarContratoDto, ContratoRenta>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
             CreateMap<ContratoRenta, ObtenerContratoDto>().ForMember(entidadDto => entidadDto.NombreDeProveedor, entidad => entidad.MapFrom(x => x.Proveedor.NombreDeProveedor))
                 .ForMember(entidadDto => entidadDto.MoneadaNombre, entidad => entidad.MapFrom(x => x.Moneda.NombreMoneda)).ReverseMap();
             CreateMap<InsertarContratoDto, ContratoRenta>()

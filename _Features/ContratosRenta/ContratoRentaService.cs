@@ -15,7 +15,7 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
     public class ContratoRentaService : IContratoRenta
     {
         private readonly IUnitOfWork _unitOfWork;
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
         private readonly ContratoRentaDomain _rentaDomain;
         public ContratoRentaService(UnitOfWorkBuilder unitOfWorkBuilder, IMapper mapper, ContratoRentaDomain contratoRentaDomain)
         {
@@ -60,7 +60,6 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
 
                 ContratoRentaDomainRequirement requirements = CrearRequisitosContrato(insertarContratoDto);
 
-                //var validacion = _rentaDomain.ValidarContrato(contrato, requirements);
                 Respuesta<ContratoRenta> validacion = _rentaDomain.ValidarContrato(contrato, requirements);
 
                 if (!validacion.Ok)
@@ -93,34 +92,33 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
             }
         }
 
-
-        public Respuesta<ActualizarContratoDto> ActualizarContrato(ActualizarContratoDto dto)
+        public Respuesta<ActualizarContratoDto> ActualizarContrato(ActualizarContratoDto actualizarContratoDto)
         {
             try
             {
-                var contrato = _unitOfWork.Repository<ContratoRenta>()
-                    .AsQueryable()
-                    .FirstOrDefault(c => c.ContratoID == dto.ContratoID);
+                var validacion = ValidarExistenciaContrato(actualizarContratoDto.ContratoID);
 
-                if (contrato == null)
+                if (!validacion.Ok)
                     return Respuesta.Fault<ActualizarContratoDto>(
-                        Fallo.RegistroNoEncontrado,
+                        validacion.Mensaje,
                         ((int)EnumMensajesError.NotFound).ToString()
                     );
 
-                _mapper.Map(dto, contrato);
-                //var validacion = _rentaDomain.ValidarContrato(contrato);
-                //if (!validacion.Ok)
-                //{
-                //    return Respuesta.Fault<ActualizarContratoDto>(
-                //        validacion.Mensaje,
-                //        ((int)EnumMensajesError.BadRequest).ToString()
-                //    );
-                //}
+                ContratoRenta? contrato = validacion.Data!;
+                _mapper.Map(actualizarContratoDto, contrato);
+
+                var requirements = CrearRequisitosContratoActualizar(actualizarContratoDto);
+                var validacionDominio = _rentaDomain.ValidarContrato(contrato, requirements);
+
+                if (!validacionDominio.Ok)
+                {
+                    return Respuesta.Fault<ActualizarContratoDto>(
+                        validacionDominio.Mensaje,
+                        ((int)EnumMensajesError.BadRequest).ToString()
+                    );
+                }
 
                 bool guardado = _unitOfWork.SaveChanges();
-
-
                 if (!guardado)
                 {
                     return Respuesta.Fault<ActualizarContratoDto>(
@@ -129,59 +127,145 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                     );
                 }
 
-                return Respuesta.Success(dto, Exito.OperacionExitosa, ((int)EnumMensajesError.Succes).ToString());
+                return Respuesta.Success(
+                    actualizarContratoDto,
+                    Exito.OperacionExitosa,
+                    ((int)EnumMensajesError.Succes).ToString()
+                );
             }
             catch (Exception)
             {
                 return Respuesta.Fault<ActualizarContratoDto>(
-                    Fallo.CreacionFallida,
+                    Fallo.ActualizacionFallida,
                     ((int)EnumMensajesError.InternarServerError).ToString()
                 );
             }
         }
 
 
-        public Respuesta<InactivarContratoDto> InactivarContrato(InactivarContratoDto dto)
+        public Respuesta<InactivarContratoDto> InactivarContrato(InactivarContratoDto inactivarContratoDto)
         {
             try
             {
-                var contrato = _unitOfWork.Repository<ContratoRenta>()
-                                .AsQueryable()
-                                .FirstOrDefault(c => c.ContratoID == dto.ContratoID);
+                var validacion = ValidarContratoParaInactivar(inactivarContratoDto.ContratoID);
 
-                if (contrato == null)
-                    return Respuesta.Fault<InactivarContratoDto>(Fallo.RegistroNoEncontrado, EnumMensajesError.NotFound.ToString());
+                if (!validacion.Ok)
+                    return Respuesta.Fault<InactivarContratoDto>(
+                        validacion.Mensaje,
+                        ((int)EnumMensajesError.BadRequest).ToString()
+                    );
+
+                ContratoRenta? contrato = validacion.Data!;
 
                 contrato.Activo = false;
-                contrato.UsuarioModifica = dto.UsuarioModifica;
                 contrato.FechaModifica = DateTime.Now;
 
-                _unitOfWork.SaveChanges();
-                return Respuesta.Success(dto, Mensajes.Exito.Eliminado, EnumMensajesError.Succes.ToString());
+                if (!_unitOfWork.SaveChanges())
+                    return Respuesta.Fault<InactivarContratoDto>(
+                        Fallo.OperacionFallida,
+                        ((int)EnumMensajesError.InternarServerError).ToString()
+                    );
+
+                return Respuesta.Success(
+                    inactivarContratoDto,
+                    Exito.Eliminado,
+                    ((int)EnumMensajesError.Succes).ToString()
+                );
             }
             catch (Exception)
             {
-                return Respuesta.Fault<InactivarContratoDto>(Fallo.OperacionFallida, EnumMensajesError.InternarServerError.ToString());
+                return Respuesta.Fault<InactivarContratoDto>(
+                    Fallo.OperacionFallida,
+                    ((int)EnumMensajesError.InternarServerError).ToString()
+                );
             }
         }
-        private ContratoRentaDomainRequirement CrearRequisitosContrato(InsertarContratoDto dto)
+
+        private ContratoRentaDomainRequirement CrearRequisitosContrato(InsertarContratoDto insertarContratoDto)
         {
             bool proveedorExiste = _unitOfWork.Repository<Proveedor>()
                 .AsQueryable()
-                .Any(p => p.ProveedorID == dto.ProveedorID);
+                .Any(p => p.ProveedorID == insertarContratoDto.ProveedorID);
 
             bool monedaExiste = _unitOfWork.Repository<Moneda>()
                 .AsQueryable()
-                .Any(m => m.MonedaID == dto.MonedaID);
+                .Any(m => m.MonedaID == insertarContratoDto.MonedaID);
 
             bool numeroContratoUnico = !_unitOfWork.Repository<ContratoRenta>()
                 .AsQueryable()
-                .Any(c => c.NumeroContrato == dto.NumeroContrato);
+                .Any(c => c.NumeroContrato == insertarContratoDto.NumeroContrato);
 
             return ContratoRentaDomainRequirement.Fill(
                 proveedorExiste,
                 monedaExiste,
                 numeroContratoUnico
+            );
+        }
+
+        private ContratoRentaDomainRequirement CrearRequisitosContratoActualizar(ActualizarContratoDto dto)
+        {
+            var proveedorExiste = _unitOfWork.Repository<Proveedor>()
+                .AsQueryable()
+                .Any(p => p.ProveedorID == dto.ProveedorID);
+
+            var monedaExiste = _unitOfWork.Repository<Moneda>()
+                .AsQueryable()
+                .Any(m => m.MonedaID == dto.MonedaID);
+
+            var numeroContratoUnico = !_unitOfWork.Repository<ContratoRenta>()
+                .AsQueryable()
+                .Any(c => c.NumeroContrato == dto.NumeroContrato && c.ContratoID != dto.ContratoID);
+
+            return ContratoRentaDomainRequirement.Fill(proveedorExiste, monedaExiste, numeroContratoUnico);
+        }
+
+        private Respuesta<ContratoRenta> ValidarContratoParaInactivar(int contratoId)
+        {
+            ContratoRenta? contrato = _unitOfWork.Repository<ContratoRenta>()
+                .AsQueryable()
+                .FirstOrDefault(c => c.ContratoID == contratoId);
+
+            if (contrato == null)
+            {
+                return Respuesta.Fault<ContratoRenta>(
+                    Fallo.RegistroNoEncontrado,
+                    ((int)EnumMensajesError.NotFound).ToString()
+                );
+            }
+
+            if (!contrato.Activo)
+            {
+                return Respuesta.Fault<ContratoRenta>(
+                    Fallo.RegistroYaInactivo,
+                    ((int)EnumMensajesError.BadRequest).ToString()
+                );
+            }
+
+            return Respuesta.Success(
+                contrato,
+                Exito.OperacionExitosa,
+                ((int)EnumMensajesError.Succes).ToString()
+            );
+        }
+
+        private Respuesta<ContratoRenta> ValidarExistenciaContrato(int contratoId)
+        {
+            ContratoRenta? contrato = _unitOfWork.Repository<ContratoRenta>()
+                .AsQueryable()
+                .FirstOrDefault(c => c.ContratoID == contratoId);
+
+            if (contrato == null)
+            {
+                return Respuesta.Fault<ContratoRenta>(
+                    Fallo.RegistroNoEncontrado,
+                    ((int)EnumMensajesError.NotFound).ToString()
+                );
+            }
+
+            return Respuesta.Success(
+                contrato,
+                Exito.OperacionExitosa,
+                ((int)EnumMensajesError.Succes).ToString()
             );
         }
 

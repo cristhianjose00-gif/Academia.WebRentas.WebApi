@@ -2,9 +2,11 @@
 using Farsiman.Domain.Core.Standard.Repositories;
 using Farsiman.Infraestructure.Core.Entity.Standard;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi.Infrastructure
 {
+    [ExcludeFromCodeCoverage]
     public class UnitOfWorkBuilder
     {
         readonly IServiceProvider _serviceProvider;

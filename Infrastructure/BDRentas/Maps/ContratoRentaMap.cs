@@ -1,9 +1,11 @@
 ﻿using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Maps
 {
+    [ExcludeFromCodeCoverage]
     public class ContratoRentaMap : IEntityTypeConfiguration<ContratoRenta>
     {
         public void Configure(EntityTypeBuilder<ContratoRenta> builder)

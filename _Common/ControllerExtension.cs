@@ -1,8 +1,10 @@
 ﻿using Farsiman.Application.Core.Standard.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi._Common
 {
+    [ExcludeFromCodeCoverage]
     public static class ControllerExtension
     {
 

@@ -10,8 +10,11 @@ using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
 using Farsiman.Extensions.Configuration;
 using Farsiman.Infraestructure.Core.AspNetCore.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddCors(options =>
@@ -77,3 +80,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+[ExcludeFromCodeCoverage]
+public partial class program { }

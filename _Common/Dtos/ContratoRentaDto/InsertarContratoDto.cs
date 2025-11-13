@@ -1,5 +1,8 @@
-﻿namespace Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto
 {
+    [ExcludeFromCodeCoverage]
     public class InsertarContratoDto
     {
         public int ProveedorID { get; set; }

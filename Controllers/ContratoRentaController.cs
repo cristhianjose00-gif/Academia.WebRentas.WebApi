@@ -3,9 +3,11 @@ using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi._Features.ContratosRenta;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi.Controllers
 {
+    [ExcludeFromCodeCoverage]
     [Route("api/[controller]")]
     [ApiController]
     public class ContratoRentaController : ControllerBase
@@ -40,27 +42,30 @@ namespace Academia.WebRentas.WebApi.Controllers
             var resultado = _service.InsertarContrato(dto);
             return this.ActionResultFrom(resultado);
         }
+
         [HttpPut("ActualizarContratoRenta")]
         public IActionResult ActualizarContrato([FromBody] ActualizarContratoDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(_service.ActualizarContrato(dto));
+            var resultado = _service.ActualizarContrato(dto);
+            return this.ActionResultFrom(resultado);
         }
+
         [HttpPut("InactivarContrato")]
-        public IActionResult InactivarContrato([FromBody] InactivarContratoDto dto)
+        public IActionResult InactivarContrato([FromQuery] int contratoId)
         {
-            //if (!ModelState.IsValid)
-            //    return BadRequest(ModelState);
+            var dto = new InactivarContratoDto
+            {
+                ContratoID = contratoId,
+            };
 
             var resultado = _service.InactivarContrato(dto);
 
-            if (resultado.Ok)
-                return Ok(resultado);
-
-            return BadRequest(resultado);
+            return this.ActionResultFrom(resultado);
         }
+
 
 
 

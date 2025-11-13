@@ -1,5 +1,8 @@
-﻿namespace Academia.WebRentas.WebApi._Common.Dtos.SucursalDto
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Academia.WebRentas.WebApi._Common.Dtos.SucursalDto
 {
+    [ExcludeFromCodeCoverage]
     public class ObtenerSucursalDTO
     {
 

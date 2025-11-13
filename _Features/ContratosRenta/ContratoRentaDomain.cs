@@ -3,6 +3,7 @@ using Academia.WebRentas.WebApi._Common.DomainRequirement;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Application.Core.Standard.DTOs;
 using static Academia.WebRentas.WebApi._Common.Mensajes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Academia.WebRentas.WebApi._Features.ContratosRenta
 {
@@ -10,59 +11,78 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
     {
         public Respuesta<ContratoRenta> ValidarContrato(ContratoRenta contratoRenta, ContratoRentaDomainRequirement contratoRentaDomainRequirement)
         {
+            List<string> errores = new List<string>();
+
             DateTime fechaAntiguedadLimite = DateTime.Today.AddYears(-3);
-            DateTime FechaFuturaLimite = DateTime.Today.AddYears(+10);
+            DateTime fechaFuturaLimite = DateTime.Today.AddYears(10);
 
             if (!contratoRentaDomainRequirement.EsValido())
-                return Respuesta<ContratoRenta>.Fault(String.Join(" ", contratoRentaDomainRequirement.ObtenerErrores()),
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+            {
+                errores.Add(string.Join(" ", contratoRentaDomainRequirement.ObtenerErrores()));
+            }
 
             if (string.IsNullOrWhiteSpace(contratoRenta.NumeroContrato))
-                return Respuesta<ContratoRenta>.Fault(Fallo.NumeroContratoRequerido,
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
-
-            if (contratoRenta.NumeroContrato.Length > 20)
-                return Respuesta<ContratoRenta>.Fault(Fallo.ExcesoCaracteres,
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+            {
+                errores.Add(Fallo.NumeroContratoRequerido);
+            }
+            else if (contratoRenta.NumeroContrato.Length > 20)
+            {
+                errores.Add(Fallo.ExcesoCaracteres);
+            }
 
             if (contratoRenta.MontoContrato <= 0)
-                return Respuesta<ContratoRenta>.Fault(Fallo.MontoValido,
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+            {
+                errores.Add(Fallo.MontoValido);
+            }
 
             if (contratoRenta.MontoMensual <= 0)
-                return Respuesta<ContratoRenta>.Fault(Fallo.MontoMensual,
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+            {
+                errores.Add(Fallo.MontoMensual);
+            }
 
             if (contratoRenta.MontoMensual > contratoRenta.MontoContrato)
-                return Respuesta<ContratoRenta>.Fault(Fallo.MontosErroneos,
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
-
-            if (contratoRenta.FechaInicio < fechaAntiguedadLimite)
-                return Respuesta<ContratoRenta>.Fault(Fallo.FechaAntigua.Replace("@anio", fechaAntiguedadLimite.Year.ToString()),
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
-
-            if (contratoRenta.FechaFin > FechaFuturaLimite)
-                return Respuesta<ContratoRenta>.Fault(Fallo.FechaFutura.Replace("@anio", FechaFuturaLimite.Year.ToString()),
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
-
-
-            if (contratoRenta.FechaInicio > contratoRenta.FechaFin)
-                return Respuesta<ContratoRenta>.Fault(Fallo.FechasErroneas,
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+            {
+                errores.Add(Fallo.MontosErroneos);
+            }
 
             if (contratoRenta.MontoTotal <= 0)
-                return Respuesta<ContratoRenta>.Fault(Fallo.MontoNegativo,
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+            {
+                errores.Add(Fallo.MontoNegativo);
+            }
 
             if (contratoRenta.MontoTotal < contratoRenta.MontoContrato)
-                return Respuesta<ContratoRenta>.Fault(Fallo.MontosErroneosContrato,
-                    ((int)EnumMensajesError.BadRequest).ToString(), new ContratoRenta());
+            {
+                errores.Add(Fallo.MontosErroneosContrato);
+            }
 
+            if (contratoRenta.FechaInicio < fechaAntiguedadLimite)
+            {
+                errores.Add(Fallo.FechaAntigua.Replace("@anio", fechaAntiguedadLimite.Year.ToString()));
+            }
 
-            return Respuesta<ContratoRenta>.Success(contratoRenta,
-                Exito.OperacionExitosa,
+            if (contratoRenta.FechaFin > fechaFuturaLimite)
+            {
+                errores.Add(Fallo.FechaFutura.Replace("@anio", fechaFuturaLimite.Year.ToString()));
+            }
+
+            if (contratoRenta.FechaInicio > contratoRenta.FechaFin)
+            {
+                errores.Add(Fallo.FechasErroneas);
+            }
+
+            if (errores.Any())
+            {
+                string mensajeErroresConcatenados = string.Join(" ", errores);
+
+                return Respuesta<ContratoRenta>.Fault(
+                    mensajeErroresConcatenados,
+                    ((int)EnumMensajesError.BadRequest).ToString(),
+                    new ContratoRenta()
+                );
+            }
+
+            return Respuesta<ContratoRenta>.Success(contratoRenta, Exito.OperacionExitosa,
                 ((int)EnumMensajesError.Succes).ToString());
         }
-
     }
 }

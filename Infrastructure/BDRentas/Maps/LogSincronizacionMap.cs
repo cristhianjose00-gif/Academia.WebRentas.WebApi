@@ -1,9 +1,11 @@
 ﻿using EFCoreLab3.Infraestructura;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Maps
 {
+    [ExcludeFromCodeCoverage]
     public class LogSincronizacionMap : IEntityTypeConfiguration<LogSincronizacion>
     {
         public void Configure(EntityTypeBuilder<LogSincronizacion> builder)

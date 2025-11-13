@@ -1,8 +1,10 @@
 ﻿using Academia.WebRentas.WebApi._Features.PagoRentas;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi.Controllers
 {
+    [ExcludeFromCodeCoverage]
     [Route("api/[controller]")]
     [ApiController]
 
@@ -13,7 +15,7 @@ namespace Academia.WebRentas.WebApi.Controllers
         {
             _service = service;
         }
-
+        
 
         [HttpGet("ObtenerPagosRenta")]
 

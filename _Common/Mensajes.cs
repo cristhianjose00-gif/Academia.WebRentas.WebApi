@@ -1,5 +1,8 @@
-﻿namespace Academia.WebRentas.WebApi._Common
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Academia.WebRentas.WebApi._Common
 {
+    [ExcludeFromCodeCoverage]
     public static class Mensajes
     {
         public class Exito
@@ -7,7 +10,7 @@
             public const string OperacionExitosa = "Operación realizada correctamente";
             public const string Creado = "Se creó correctamente";
             public const string Actualizado = "Se actualizó correctamente";
-            public const string Eliminado = "Se eliminó correctamente";
+            public const string Eliminado = "El registro se eliminó correctamente";
             public const string Autenticado = "Autenticación exitosa";
         }
 
@@ -34,7 +37,7 @@
             public const string MontosErroneosContrato = "El monto total no puede ser menor que el monto del contrato.";
             public const string CampoRepetido = "El @Campo ya existe";
             public const string CamposRequerridos = "El @Campo es requerido";
-            //public const string Hola = "s";
+            public const string RegistroYaInactivo = "El Registro ya se encuentra eliminado";
             //public const string Hola = "s";
 
 
