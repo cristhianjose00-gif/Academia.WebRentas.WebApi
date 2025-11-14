@@ -32,7 +32,7 @@ namespace Academia.WebRentas.WebApi.Controllers
                 return Ok(respuestaPaginada.Data);
             }
 
-            return StatusCode(500, respuestaPaginada.Mensaje);
+            return this.ActionResultFrom(respuestaPaginada);
         }
 
         [HttpPost("InsertarContratoRenta")]

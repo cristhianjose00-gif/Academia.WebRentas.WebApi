@@ -2,9 +2,11 @@
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Maps;
 using EFCoreLab3.Infraestructura;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas
 {
+    [ExcludeFromCodeCoverage]
     public class BDRentasContext : DbContext
     {
         public BDRentasContext(DbContextOptions<BDRentasContext> options) : base(options)

@@ -13,8 +13,6 @@ namespace Academia.WebRentas.WebApi._Common.Dtos.SucursalDto
 
         public int ContratoID { get; set; }
 
-        public bool Activo { get; set; }
-
         public string UsuarioAgrega { get; set; } = null!;
     }
 

@@ -2,7 +2,7 @@
 
 namespace EFCoreLab3.Infraestructura;
 
-public partial class LogSincronizacion
+public class LogSincronizacion
 {
     public int LogID { get; set; }
 

@@ -16,6 +16,7 @@ using System.Diagnostics.CodeAnalysis;
 var builder = WebApplication.CreateBuilder(args);
 
 
+
 // Add services to the container.
 builder.Services.AddCors(options =>
 {
@@ -82,4 +83,4 @@ app.MapControllers();
 app.Run();
 
 [ExcludeFromCodeCoverage]
-public partial class program { }
+public partial class Program { }

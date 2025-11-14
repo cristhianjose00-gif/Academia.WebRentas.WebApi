@@ -1,6 +1,7 @@
 ﻿using Academia.WebRentas.WebApi._Common;
 using Academia.WebRentas.WebApi._Common.DomainRequirement;
 using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
+using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi.Infrastructure;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
@@ -23,35 +24,41 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
             _mapper = mapper;
             _rentaDomain = contratoRentaDomain;
         }
-        public Respuesta<List<ObtenerContratoDto>> ObtenerContratoRenta(int pagina, int tamanoPagina)
+        public Respuesta<List<ObtenerSucursalDTO>> ObtenerSucursales(int pagina, int tamanoPagina)
         {
             try
             {
+                int skip = PaginacionHelper.CalcularSkip(pagina, tamanoPagina);
 
-                int skip = (pagina - 1) * tamanoPagina;
-
-                var query = _unitOfWork.Repository<ContratoRenta>()
+                var query = _unitOfWork.Repository<Sucursal>()
                     .AsQueryable()
-                    .Include(x => x.Moneda)
                     .Include(x => x.Proveedor)
+                    .Include(x => x.Contrato)
                     .Where(x => x.Activo)
-                    .OrderBy(x => x.ContratoID) 
+                    .OrderBy(x => x.SucursalID)
                     .Skip(skip)
                     .Take(tamanoPagina);
 
-                var contratoRentas = query.ToList();
+                var sucursales = query.ToList();
 
-                var contratoRentasDto = _mapper.Map<List<ObtenerContratoDto>>(contratoRentas);
+                var sucursalesDto = _mapper.Map<List<ObtenerSucursalDTO>>(sucursales);
 
-
-                return Respuesta.Success(contratoRentasDto, Exito.OperacionExitosa, EnumMensajesError.Succes.ToString());
+                return Respuesta.Success(
+                    sucursalesDto,
+                    Exito.OperacionExitosa,
+                    EnumMensajesError.Succes.ToString()
+                );
             }
-            catch (Exception )
+            catch (Exception)
             {
-                return Respuesta.Fault<List<ObtenerContratoDto>>(Fallo.OperacionFallida, EnumMensajesError.InternarServerError.ToString());
+                return Respuesta.Fault<List<ObtenerSucursalDTO>>(
+                    Fallo.OperacionFallida,
+                    EnumMensajesError.InternarServerError.ToString()
+                );
             }
         }
-        
+
+
         public Respuesta<InsertarContratoDto> InsertarContrato(InsertarContratoDto insertarContratoDto)
         {
             try

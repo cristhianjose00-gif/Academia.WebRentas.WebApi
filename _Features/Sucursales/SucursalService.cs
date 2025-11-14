@@ -21,21 +21,36 @@ namespace Academia.WebRentas.WebApi._Features.Sucursales
             _unitOfWork = unitOfWorkBuilder.BuilderRentas();
             _mapper = mapper;
         }
-        public Respuesta<List<ObtenerSucursalDTO>> ObtenerSucursal()
-        {
-            try
-            {
-                var sucursales = _unitOfWork.Repository<Sucursal>().AsQueryable().Include(x => x.Proveedor).Include(x => x.Contrato).Where(x => x.Activo).ToList();
-                var sucursalDTO = _mapper.Map<List<ObtenerSucursalDTO>>(sucursales);
-                return Respuesta.Success(sucursalDTO, Mensajes.Exito.OperacionExitosa, EnumMensajesError.Succes.ToString());
+public Respuesta<List<ObtenerSucursalDTO>> ObtenerSucursales(int pagina, int tamanoPagina)
+{
+    try
+    {
+        int skip = PaginacionHelper.CalcularSkip(pagina, tamanoPagina);
 
-            }
-            catch (Exception)
+                var query = ConstruirQuerySucursales()
+                     .Skip(skip)
+                     .Take(tamanoPagina);
 
-            {
-                return Respuesta.Fault<List<ObtenerSucursalDTO>>(Fallo.OperacionFallida, EnumMensajesError.InternarServerError.ToString());
-            }
-        }
+                var sucursales = query.ToList();
+
+        var sucursalesDto = _mapper.Map<List<ObtenerSucursalDTO>>(sucursales);
+
+        return Respuesta.Success(
+            sucursalesDto,
+            Exito.OperacionExitosa,
+            EnumMensajesError.Succes.ToString()
+        );
+    }
+    catch (Exception)
+    {
+        return Respuesta.Fault<List<ObtenerSucursalDTO>>(
+            Fallo.OperacionFallida,
+            EnumMensajesError.InternarServerError.ToString()
+        );
+    }
+}
+
+        
         public Respuesta<InsertarSucursalDto> InsertarSucursal(InsertarSucursalDto dto)
         {
             try
@@ -130,6 +145,16 @@ namespace Academia.WebRentas.WebApi._Features.Sucursales
             {
                 return Respuesta.Fault<DesactivarSucursalDto>(Fallo.OperacionFallida, EnumMensajesError.InternarServerError.ToString());
             }
+        }
+
+        private IQueryable<Sucursal> ConstruirQuerySucursales()
+        {
+            return _unitOfWork.Repository<Sucursal>()
+                .AsQueryable()
+                .Include(x => x.Proveedor)
+                .Include(x => x.Contrato)
+                .Where(x => x.Activo)
+                .OrderBy(x => x.SucursalID);
         }
 
 

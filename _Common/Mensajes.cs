@@ -38,7 +38,13 @@ namespace Academia.WebRentas.WebApi._Common
             public const string CampoRepetido = "El @Campo ya existe";
             public const string CamposRequerridos = "El @Campo es requerido";
             public const string RegistroYaInactivo = "El Registro ya se encuentra eliminado";
+            public const string ExcesoDeCaracteresSucursal = "El nombre de la sucursal no puede exceder los 50 caracteres";
+            public const string ExcesoDeCaracteresDireccion = "La direccion de la sucursal no puede exceder los 50 caracteres";
             //public const string Hola = "s";
+            //public const string Hola = "s";
+            //public const string Hola = "s";
+            //public const string Hola = "s";
+
 
 
         }
