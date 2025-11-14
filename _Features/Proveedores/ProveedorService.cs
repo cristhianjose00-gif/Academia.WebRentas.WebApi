@@ -2,11 +2,14 @@
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi._Features.Proveedores
 {
+    [ExcludeFromCodeCoverage]
     public class ProveedorService
     {
+        
 
         private readonly BDRentasContext _bdRenta;
 

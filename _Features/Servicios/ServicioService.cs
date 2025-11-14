@@ -2,9 +2,11 @@
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Academia.WebRentas.WebApi._Features.Servicios
 {
+    [ExcludeFromCodeCoverage]
     public class ServicioService
     {
         private readonly BDRentasContext _bdRenta;

@@ -31,7 +31,7 @@ namespace Academia.WebRentas.WebApi._Features.Sucursales
             {
                 errores.Add(Fallo.CamposRequerridos.Replace("@Campo", "Campo Direccion de la sucursal"));
             }
-            else if (sucursal.NombreSucursal.Length > 50)
+            else if (sucursal.Direccion.Length > 50)
             {
                 errores.Add(Fallo.ExcesoDeCaracteresDireccion);
             }

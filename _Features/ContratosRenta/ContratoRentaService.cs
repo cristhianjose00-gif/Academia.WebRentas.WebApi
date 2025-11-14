@@ -1,7 +1,6 @@
 ﻿using Academia.WebRentas.WebApi._Common;
 using Academia.WebRentas.WebApi._Common.DomainRequirement;
 using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
-using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi.Infrastructure;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
@@ -9,12 +8,15 @@ using AutoMapper;
 using Farsiman.Application.Core.Standard.DTOs;
 using Farsiman.Domain.Core.Standard.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 using static Academia.WebRentas.WebApi._Common.Mensajes;
 
 namespace Academia.WebRentas.WebApi._Features.ContratosRenta
 {
+    [ExcludeFromCodeCoverage]
     public class ContratoRentaService : IContratoRenta
     {
+        
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ContratoRentaDomain _rentaDomain;
@@ -24,41 +26,31 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
             _mapper = mapper;
             _rentaDomain = contratoRentaDomain;
         }
-        public Respuesta<List<ObtenerSucursalDTO>> ObtenerSucursales(int pagina, int tamanoPagina)
+        public Respuesta<List<ObtenerContratoDto>> ObtenerContratoRenta(int pagina, int tamanoPagina)
         {
             try
             {
+
                 int skip = PaginacionHelper.CalcularSkip(pagina, tamanoPagina);
 
-                var query = _unitOfWork.Repository<Sucursal>()
-                    .AsQueryable()
-                    .Include(x => x.Proveedor)
-                    .Include(x => x.Contrato)
-                    .Where(x => x.Activo)
-                    .OrderBy(x => x.SucursalID)
-                    .Skip(skip)
-                    .Take(tamanoPagina);
 
-                var sucursales = query.ToList();
+                IQueryable<ContratoRenta> query = ConstruirQueryContratos()
+                   .Skip(skip)
+                   .Take(tamanoPagina);
 
-                var sucursalesDto = _mapper.Map<List<ObtenerSucursalDTO>>(sucursales);
+                List<ContratoRenta> contratoRentas = query.ToList();
 
-                return Respuesta.Success(
-                    sucursalesDto,
-                    Exito.OperacionExitosa,
-                    EnumMensajesError.Succes.ToString()
-                );
+                List<ObtenerContratoDto> contratoRentasDto = _mapper.Map<List<ObtenerContratoDto>>(contratoRentas);
+
+
+                return Respuesta.Success(contratoRentasDto, Exito.OperacionExitosa, EnumMensajesError.Succes.ToString());
             }
-            catch (Exception)
+            catch (Exception )
             {
-                return Respuesta.Fault<List<ObtenerSucursalDTO>>(
-                    Fallo.OperacionFallida,
-                    EnumMensajesError.InternarServerError.ToString()
-                );
+                return Respuesta.Fault<List<ObtenerContratoDto>>(Fallo.OperacionFallida, EnumMensajesError.InternarServerError.ToString());
             }
         }
-
-
+        
         public Respuesta<InsertarContratoDto> InsertarContrato(InsertarContratoDto insertarContratoDto)
         {
             try
@@ -103,7 +95,7 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
         {
             try
             {
-                var validacion = ValidarExistenciaContrato(actualizarContratoDto.ContratoID);
+                Respuesta<ContratoRenta> validacion = ValidarExistenciaContrato(actualizarContratoDto.ContratoID);
 
                 if (!validacion.Ok)
                     return Respuesta.Fault<ActualizarContratoDto>(
@@ -114,8 +106,8 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                 ContratoRenta? contrato = validacion.Data!;
                 _mapper.Map(actualizarContratoDto, contrato);
 
-                var requirements = CrearRequisitosContratoActualizar(actualizarContratoDto);
-                var validacionDominio = _rentaDomain.ValidarContrato(contrato, requirements);
+                ContratoRentaDomainRequirement requirements = CrearRequisitosContratoActualizar(actualizarContratoDto);
+                Respuesta<ContratoRenta> validacionDominio = _rentaDomain.ValidarContrato(contrato, requirements);
 
                 if (!validacionDominio.Ok)
                 {
@@ -154,7 +146,7 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
         {
             try
             {
-                var validacion = ValidarContratoParaInactivar(inactivarContratoDto.ContratoID);
+                Respuesta<ContratoRenta> validacion = ValidarContratoParaInactivar(inactivarContratoDto.ContratoID);
 
                 if (!validacion.Ok)
                     return Respuesta.Fault<InactivarContratoDto>(
@@ -163,9 +155,6 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                     );
 
                 ContratoRenta? contrato = validacion.Data!;
-
-                contrato.Activo = false;
-                contrato.FechaModifica = DateTime.Now;
 
                 if (!_unitOfWork.SaveChanges())
                     return Respuesta.Fault<InactivarContratoDto>(
@@ -275,6 +264,14 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                 ((int)EnumMensajesError.Succes).ToString()
             );
         }
-
+        private IQueryable<ContratoRenta> ConstruirQueryContratos()
+        {
+            return _unitOfWork.Repository<ContratoRenta>()
+                    .AsQueryable()
+                    .Include(x => x.Moneda)
+                    .Include(x => x.Proveedor)
+                    .Where(x => x.Activo)
+                    .OrderBy(x => x.ContratoID);
+        }
     }
 }

@@ -2,6 +2,8 @@
 using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi._Features.ContratosRenta;
+using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
+using Farsiman.Application.Core.Standard.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics.CodeAnalysis;
 
@@ -17,7 +19,7 @@ namespace Academia.WebRentas.WebApi.Controllers
         {
             _service = service;
         }
-
+        #region ObtenerContrato
         [HttpGet("ObtenerContratosRenta")]
         public IActionResult ObtenerContratosRenta(
            [FromQuery] int pagina = 1 
@@ -25,7 +27,7 @@ namespace Academia.WebRentas.WebApi.Controllers
         {
             const int tamanoPaginaFijo = 10;
 
-            var respuestaPaginada = _service.ObtenerContratoRenta(pagina, tamanoPaginaFijo);
+            Respuesta<List<ObtenerContratoDto>> respuestaPaginada = _service.ObtenerContratoRenta(pagina, tamanoPaginaFijo);
 
             if (respuestaPaginada.Ok)
             {
@@ -34,34 +36,34 @@ namespace Academia.WebRentas.WebApi.Controllers
 
             return this.ActionResultFrom(respuestaPaginada);
         }
-
+        #endregion
         [HttpPost("InsertarContratoRenta")]
-        public IActionResult InsertarContrato([FromBody] InsertarContratoDto dto)
+        public IActionResult InsertarContrato([FromBody] InsertarContratoDto insertarContratoDto)
         {
 
-            var resultado = _service.InsertarContrato(dto);
+            Respuesta<InsertarContratoDto> resultado = _service.InsertarContrato(insertarContratoDto);
             return this.ActionResultFrom(resultado);
         }
 
         [HttpPut("ActualizarContratoRenta")]
-        public IActionResult ActualizarContrato([FromBody] ActualizarContratoDto dto)
+        public IActionResult ActualizarContrato([FromBody] ActualizarContratoDto actualizarContratoDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var resultado = _service.ActualizarContrato(dto);
+            Respuesta<ActualizarContratoDto> resultado = _service.ActualizarContrato(actualizarContratoDto);
             return this.ActionResultFrom(resultado);
         }
 
         [HttpPut("InactivarContrato")]
         public IActionResult InactivarContrato([FromQuery] int contratoId)
         {
-            var dto = new InactivarContratoDto
+            InactivarContratoDto inactivarContratoDto = new InactivarContratoDto
             {
                 ContratoID = contratoId,
             };
 
-            var resultado = _service.InactivarContrato(dto);
+            Respuesta<InactivarContratoDto> resultado = _service.InactivarContrato(inactivarContratoDto);
 
             return this.ActionResultFrom(resultado);
         }

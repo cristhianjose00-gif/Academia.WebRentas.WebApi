@@ -1,5 +1,7 @@
-﻿using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
+﻿using Academia.WebRentas.WebApi._Common;
+using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
 using Academia.WebRentas.WebApi._Features.Sucursales;
+using Farsiman.Application.Core.Standard.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics.CodeAnalysis;
 
@@ -15,50 +17,50 @@ namespace Academia.WebRentas.WebApi.Controllers
         {
             _service = service;
         }
-        [HttpGet("ObtenerSucursal")]
-
-        public IActionResult ObtenerSucursal()
+        [HttpGet("ObtenerSucursales")]
+        public IActionResult ObtenerSucursales([FromQuery] int pagina = 1)
         {
+            const int tamanoPaginaFijo = 10;
 
-            return Ok(_service.ObtenerSucursal());
+            var respuestaPaginada = _service.ObtenerSucursales(pagina, tamanoPaginaFijo);
+
+            if (respuestaPaginada.Ok)
+            {
+                return Ok(respuestaPaginada.Data);
+            }
+
+            return this.ActionResultFrom(respuestaPaginada);
         }
+
         [HttpPost("InsertarSucursal")]
-        public IActionResult InsertarSucursal([FromBody] InsertarSucursalDto dto)
+        public IActionResult InsertarSucursal([FromBody] InsertarSucursalDto insertarSucursalDto)
         {
-            if (dto == null)
-                return BadRequest("El cuerpo de la solicitud no puede ser nulo.");
-
-            var resultado = _service.InsertarSucursal(dto);
-
-            if (!resultado.Ok)
-                return BadRequest(resultado);
-
-            return Ok(resultado);
+            Respuesta<InsertarSucursalDto> resultado = _service.InsertarSucursal(insertarSucursalDto);
+            return this.ActionResultFrom(resultado);
         }
+
         [HttpPut("ActualizarSucursal")]
-        public IActionResult ActualizarSucursal([FromBody] ActualizarSucursalDto dto)
+        public IActionResult ActualizarSucursal([FromBody] ActualizarSucursalDto actualizarSucursalDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var resultado = _service.ActualizarSucursal(dto);
-
-            if (resultado.Ok)
-                return Ok(resultado);
-
-            return BadRequest(resultado);
+            Respuesta<ActualizarSucursalDto> resultado = _service.ActualizarSucursal(actualizarSucursalDto);
+            return this.ActionResultFrom(resultado);
         }
 
-
-        [HttpPut("DesactivarSucursal")]
-        public IActionResult InactivarSucursal([FromBody] DesactivarSucursalDto dto)
+        [HttpPut("InactivarSucursal")]
+        public IActionResult InactivarSucursal([FromQuery] int sucursalId)
         {
-            var respuesta = _service.InactivarSucursal(dto);
-            if (!respuesta.Ok)
-                return StatusCode(500, respuesta);
+            DesactivarSucursalDto desactivarSucursalDto = new DesactivarSucursalDto
+            {
+                SucursalID = sucursalId
+            };
 
-            return Ok(respuesta);
+            var resultado = _service.InactivarSucursal(desactivarSucursalDto);
+            return this.ActionResultFrom(resultado);
         }
+
 
     }
 
