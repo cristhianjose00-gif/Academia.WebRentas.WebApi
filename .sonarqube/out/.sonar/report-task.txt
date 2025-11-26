@@ -1,0 +1,6 @@
+projectKey=academia.academia.transporteapi
+serverUrl=https://sonarqube.grupofarsiman.io
+serverVersion=8.5.1.38104
+dashboardUrl=https://sonarqube.grupofarsiman.io/dashboard?id=academia.academia.transporteapi
+ceTaskId=AZqEiBtBEEElf7D0R6wW
+ceTaskUrl=https://sonarqube.grupofarsiman.io/api/ce/task?id=AZqEiBtBEEElf7D0R6wW

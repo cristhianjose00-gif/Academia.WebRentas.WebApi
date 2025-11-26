@@ -18,16 +18,12 @@ namespace Academia.WebRentas.WebApi.Controllers
             _service = service;
         }
         [HttpGet("ObtenerSucursales")]
-        public IActionResult ObtenerSucursales([FromQuery] int pagina = 1)
+        public IActionResult ObtenerSucursales([FromQuery] int pagina = 1)  
         {
             const int tamanoPaginaFijo = 10;
 
             var respuestaPaginada = _service.ObtenerSucursales(pagina, tamanoPaginaFijo);
 
-            if (respuestaPaginada.Ok)
-            {
-                return Ok(respuestaPaginada.Data);
-            }
 
             return this.ActionResultFrom(respuestaPaginada);
         }
@@ -49,7 +45,7 @@ namespace Academia.WebRentas.WebApi.Controllers
             return this.ActionResultFrom(resultado);
         }
 
-        [HttpPut("InactivarSucursal")]
+        [HttpPatch("InactivarSucursal")]
         public IActionResult InactivarSucursal([FromQuery] int sucursalId)
         {
             DesactivarSucursalDto desactivarSucursalDto = new DesactivarSucursalDto

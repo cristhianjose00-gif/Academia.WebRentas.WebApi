@@ -17,9 +17,9 @@ namespace Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto
 
         public decimal MontoTotal { get; set; }
 
-        public DateTime FechaInicio { get; set; }
+        public DateOnly FechaInicio { get; set; }
 
-        public DateTime FechaFin { get; set; }
+        public DateOnly FechaFin { get; set; }
 
         public string UsuarioAgrega { get; set; } = null!;
     }

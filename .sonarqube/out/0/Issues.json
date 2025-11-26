@@ -1,0 +1,777 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Compilador de Microsoft (R) Visual C#",
+        "version": "4.14.0.0",
+        "fileVersion": "4.14.0-3.25465.8 (b0a9adbf)",
+        "semanticVersion": "4.14.0",
+        "language": "es-MX"
+      },
+      "results": [
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/Program.cs",
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 1,
+                  "endLine": 44,
+                  "endColumn": 5
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Common/Mensajes.cs",
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 13,
+                  "endLine": 43,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1128",
+          "level": "warning",
+          "message": "Remove this unnecessary 'using'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/Controllers/ContratoRentaController.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 1,
+                  "endLine": 5,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/Program.cs",
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 22,
+                  "endLine": 89,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1128",
+          "level": "warning",
+          "message": "Remove this unnecessary 'using'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/Infrastructure/BDRentas/Entities/Sucursal.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'ObtenerSucursalDTO' to match pascal case naming rules, consider using 'ObtenerSucursalDto'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Common/Dtos/SucursalDto/ObtenerSucursalDTO.cs",
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 18,
+                  "endLine": 6,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Common/Mensajes.cs",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 22,
+                  "endLine": 8,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1128",
+          "level": "warning",
+          "message": "Remove this unnecessary 'using'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/Program.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 1,
+                  "endLine": 10,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1128",
+          "level": "warning",
+          "message": "Remove this unnecessary 'using'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/Program.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 1,
+                  "endLine": 12,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1128",
+          "level": "warning",
+          "message": "Remove this unnecessary 'using'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Common/Service/IContratoRenta.cs",
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 1,
+                  "endLine": 2,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Common/Mensajes.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 22,
+                  "endLine": 17,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_mapper' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalService.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 25,
+                  "endLine": 22,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1128",
+          "level": "warning",
+          "message": "Remove this unnecessary 'using'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalService.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 1,
+                  "endLine": 5,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1128",
+          "level": "warning",
+          "message": "Remove this unnecessary 'using'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalService.cs",
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 1,
+                  "endLine": 11,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'insertarContratoDto' to 'dto' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/ContratosRenta/ContratoRentaService.cs",
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 84,
+                  "endLine": 54,
+                  "endColumn": 103
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'insertarSucursalDto' to 'dto' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalService.cs",
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 84,
+                  "endLine": 60,
+                  "endColumn": 103
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalService.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 27,
+                  "endLine": 69,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalService.cs",
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 27,
+                  "endLine": 72,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalService.cs",
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 27,
+                  "endLine": 75,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'actualizarContratoDto' to 'dto' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/ContratosRenta/ContratoRentaService.cs",
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 90,
+                  "endLine": 94,
+                  "endColumn": 111
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1859",
+          "level": "note",
+          "message": "Cambiar el tipo de campo '_service' de 'Academia.WebRentas.WebApi._Common.Service.IContratoRenta' a 'Academia.WebRentas.WebApi._Features.ContratosRenta.ContratoRentaService' para mejorar el rendimiento",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/Controllers/ContratoRentaController.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 41,
+                  "endLine": 17,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'actualizarSucursalDto' to 'dto' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalService.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 90,
+                  "endLine": 114,
+                  "endColumn": 111
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'inactivarSucursalDto' to 'dto' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalService.cs",
+                "region": {
+                  "startLine": 169,
+                  "startColumn": 89,
+                  "endLine": 169,
+                  "endColumn": 109
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'inactivarContratoDto' to 'dto' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/ContratosRenta/ContratoRentaService.cs",
+                "region": {
+                  "startLine": 145,
+                  "startColumn": 87,
+                  "endLine": 145,
+                  "endColumn": 107
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'contrato'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/ContratosRenta/ContratoRentaService.cs",
+                "region": {
+                  "startLine": 157,
+                  "startColumn": 32,
+                  "endLine": 157,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1860",
+          "level": "note",
+          "message": "Es preferible comparar \"Count\" con 0 en lugar de usar \"Any()\", tanto por claridad como por rendimiento.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/Sucursales/SucursalDomain.cs",
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 17,
+                  "endLine": 39,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "DiagnosticPropertyKey": "Count"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1860",
+          "level": "note",
+          "message": "Es preferible comparar \"Count\" con 0 en lugar de usar \"Any()\", tanto por claridad como por rendimiento.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/cjpineda/Desktop/Ejercicios%20c%23/ProyectoAcademia/Academia.WebRentas.WebApi/_Features/ContratosRenta/ContratoRentaDomain.cs",
+                "region": {
+                  "startLine": 73,
+                  "startColumn": 17,
+                  "endLine": 73,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "DiagnosticPropertyKey": "Count"
+            }
+          }
+        },
+        {
+          "ruleId": "AD0001",
+          "level": "warning",
+          "message": "El analizador \"SonarAnalyzer.Rules.CSharp.CbdeHandlerRule\" produjo una excepción de tipo \"SonarAnalyzer.CBDE.CbdeException\" con el mensaje \"Top level error in CBDE handling: ImplicitObjectCreationExpression ## Details:  ## Inner exception:  ## Stack trace:    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildExpression(ExpressionSyntax expression, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildVariableDeclaration(VariableDeclarationSyntax declaration, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildStatement(StatementSyntax statement, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildStatements(IEnumerable`1 statements, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildBlock(BlockSyntax block, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildStatement(StatementSyntax statement, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.Build(SyntaxNode node, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.AbstractControlFlowGraphBuilder.Build() ##    at SonarAnalyzer.CBDE.MlirExporter.ExportFunction(MethodDeclarationSyntax method) ##    at SonarAnalyzer.CBDE.CbdeHandler.ExportFunctionMlir(SyntaxTree tree, SemanticModel model, MlirExporterMetrics exporterMetrics, String mlirFileName) ##    at SonarAnalyzer.CBDE.CbdeHandler.<RegisterMlirAndCbdeInOneStep>b__31_0(CompilationAnalysisContext c)\".\u000d\u000aSe produjo una excepción con el contexto siguiente:\u000d\u000aCompilation: Academia.WebRentas.WebApi\u000d\u000a\u000d\u000aSonarAnalyzer.CBDE.CbdeException: Top level error in CBDE handling: ImplicitObjectCreationExpression ## Details:  ## Inner exception:  ## Stack trace:    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildExpression(ExpressionSyntax expression, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildVariableDeclaration(VariableDeclarationSyntax declaration, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildStatement(StatementSyntax statement, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildStatements(IEnumerable`1 statements, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildBlock(BlockSyntax block, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.BuildStatement(StatementSyntax statement, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.CSharp.CSharpControlFlowGraphBuilder.Build(SyntaxNode node, Block currentBlock) ##    at SonarAnalyzer.ControlFlowGraph.AbstractControlFlowGraphBuilder.Build() ##    at SonarAnalyzer.CBDE.MlirExporter.ExportFunction(MethodDeclarationSyntax method) ##    at SonarAnalyzer.CBDE.CbdeHandler.ExportFunctionMlir(SyntaxTree tree, SemanticModel model, MlirExporterMetrics exporterMetrics, String mlirFileName) ##    at SonarAnalyzer.CBDE.CbdeHandler.<RegisterMlirAndCbdeInOneStep>b__31_0(CompilationAnalysisContext c)\u000d\u000a   at SonarAnalyzer.CBDE.CbdeHandler.<RegisterMlirAndCbdeInOneStep>b__31_0(CompilationAnalysisContext c)\u000d\u000a   at SonarAnalyzer.Helpers.SonarAnalysisContext.<>c__DisplayClass30_0`1.<RegisterContextAction>b__0(TContext c)\u000d\u000a   at Microsoft.CodeAnalysis.Diagnostics.AnalyzerExecutor.ExecuteAndCatchIfThrows_NoLock[TArg](DiagnosticAnalyzer analyzer, Action`1 analyze, TArg argument, Nullable`1 info, CancellationToken cancellationToken)\u000d\u000a-----\u000d\u000a\u000d\u000aSuprima el diagnóstico siguiente para deshabilitar este analizador: S3949",
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "AD0001": {
+          "id": "AD0001",
+          "shortDescription": "Error del analizador",
+          "defaultLevel": "warning",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "AnalyzerException"
+            ]
+          }
+        },
+        "CA1859": {
+          "id": "CA1859",
+          "shortDescription": "Usar tipos concretos cuando sea posible para mejorar el rendimiento",
+          "fullDescription": "El uso de tipos concretos evita la sobrecarga de llamadas virtuales o de interfaz y habilita la inserción.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1859",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CA1860": {
+          "id": "CA1860",
+          "shortDescription": "Evitar usar el método de extensión \"Enumerable.Any()\"",
+          "fullDescription": "Es preferible usar las propiedades \"IsEmpty\", \"Count\" o \"Length\", si hay alguna disponible, en lugar de llamar a \"Enumerable.Any()\". La intención es más clara y tiene un mejor rendimiento que usar el método de extensión \"Enumerable.Any()\".",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1860",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "S101": {
+          "id": "S101",
+          "shortDescription": "Types should be named in PascalCase",
+          "fullDescription": "Shared naming conventions allow teams to collaborate efficiently. This rule checks whether or not type names are using PascalCase. To reduce noise, two consecutive upper case characters are allowed unless they form the whole type name. So, MyXClass is compliant, but XC on its own is not.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-101",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S1118": {
+          "id": "S1118",
+          "shortDescription": "Utility classes should not have public constructors",
+          "fullDescription": "Utility classes, which are collections of static members, are not meant to be instantiated.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S112": {
+          "id": "S112",
+          "shortDescription": "General exceptions should never be thrown",
+          "fullDescription": "Throwing such general exceptions as Exception, SystemException, ApplicationException, IndexOutOfRangeException, NullReferenceException, OutOfMemoryException and ExecutionEngineException prevents calling methods from handling true, system-generated exceptions differently than application-generated errors. ",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-112",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope"
+            ]
+          }
+        },
+        "S1128": {
+          "id": "S1128",
+          "shortDescription": "Unused \"using\" should be removed",
+          "fullDescription": "Although unnecessary using won't change anything to the produced application, removing them:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1128",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S125": {
+          "id": "S125",
+          "shortDescription": "Sections of code should not be commented out",
+          "fullDescription": "Programmers should not comment out code as it bloats programs and reduces readability.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S1481": {
+          "id": "S1481",
+          "shortDescription": "Unused local variables should be removed",
+          "fullDescription": "If a local variable is declared but not used, it is dead code and should be removed. Doing so will improve maintainability because developers will not wonder what the variable is used for.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1481",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S2933": {
+          "id": "S2933",
+          "shortDescription": "Fields that are only assigned in the constructor should be \"readonly\"",
+          "fullDescription": "readonly fields can only be assigned in a class constructor. If a class has a field that's not marked readonly but is only set in the constructor, it could cause confusion about the field's intended use. To avoid confusion, such fields should be marked readonly to make their intended use explicit, and to prevent future maintainers from inadvertently changing their use.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2933",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S927": {
+          "id": "S927",
+          "shortDescription": "parameter names should match base declaration and other partial definitions",
+          "fullDescription": "The name of a parameter in an externally visible method override does not match the name of the parameter in the base declaration of the method, or the name of the parameter in the interface declaration of the method or the name of any other partial definition.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-927",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

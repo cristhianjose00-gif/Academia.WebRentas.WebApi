@@ -10,7 +10,7 @@ namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Maps
     {
         public void Configure(EntityTypeBuilder<Sucursal> builder)
         {
-            builder.ToTable("Sucursale");
+            builder.ToTable("Sucursales");
             builder.HasKey(x => x.SucursalID);
             builder.Property(x => x.NombreSucursal).HasColumnName("NombreSucursal");
             builder.Property(x => x.Direccion).HasColumnName("Direccion");

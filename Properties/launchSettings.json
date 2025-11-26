@@ -4,12 +4,14 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "FS_SQL_WebRentas_SERVER": "192.168.1.183",
         "FS_SQL_WebRentas_DBNAME": "BDRentas",
         "FS_SQL_WebRentas_USER": "sysacademiagfs",
         "FS_SQL_WebRentas_PASSWORD": "NdaKKvwemBLXkXnT"
+
       }
     },
     "IIS Express": {

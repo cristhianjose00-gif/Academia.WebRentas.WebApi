@@ -1,0 +1,60 @@
+﻿C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\ContratoRentaDomainTest.cs
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\DataTest\ContratosRentaTest\ActualizarTest.cs
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\DataTest\ContratosRentaTest\ContratoRentaTest.cs
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\DataTest\SucursalesTest\SucursalTest.cs
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\SucursalDomainTest.cs
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\UnitTest1.cs
+C:\Users\cjpineda\.nuget\packages\microsoft.net.test.sdk\17.8.0\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.Program.cs
+C:\Users\cjpineda\.nuget\packages\microsoft.testplatform.testhost\17.8.0\build\netcoreapp3.1\x64\testhost.exe
+C:\Users\cjpineda\.nuget\packages\microsoft.testplatform.testhost\17.8.0\build\netcoreapp3.1\x64\testhost.dll
+C:\Users\cjpineda\.nuget\packages\xunit.runner.visualstudio\2.5.3\build\net6.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\cjpineda\.nuget\packages\xunit.runner.visualstudio\2.5.3\build\net6.0\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\cjpineda\.nuget\packages\xunit.runner.visualstudio\2.5.3\build\net6.0\xunit.runner.utility.netcoreapp10.dll
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_Colaborador.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_ContratoRenta.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_ContratoRentaDomain.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_ContratoRentaDomainRequirement.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_Documento.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_LogSincronizacion.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_Moneda.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_PaginacionHelper.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_PagoRenta.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_Proveedor.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_Servicio.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_Sucursal.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_SucursalDomain.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_SucursalDomainRequirement.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_TasaDeCambio.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\Academia.WebRentas.WebApi_TipoDocumento.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\class.js
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_cog.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_cog_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_cube.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_cube_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_fork.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_fork_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_info-circled.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_info-circled_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_minus.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_minus_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_plus.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_plus_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_search-minus.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_search-minus_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_search-plus.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_search-plus_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_sponsor.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_star.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_star_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_up-dir.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_up-dir_active.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_up-down-dir.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_up-down-dir_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_wrench.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\icon_wrench_dark.svg
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\index.htm
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\index.html
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\main.js
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage-report\report.css
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage.cobertura.xml
+C:\Users\cjpineda\Desktop\Ejercicios c#\ProyectoAcademia\Rentas.UnitTest\coverage.json

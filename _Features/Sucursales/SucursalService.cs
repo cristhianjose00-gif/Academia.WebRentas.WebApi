@@ -8,6 +8,7 @@ using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using AutoMapper;
 using Farsiman.Application.Core.Standard.DTOs;
 using Farsiman.Domain.Core.Standard.Repositories;
+using Farsiman.Infraestructure.Core.Entity.Standard;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
@@ -21,22 +22,24 @@ namespace Academia.WebRentas.WebApi._Features.Sucursales
         private readonly IUnitOfWork _unitOfWork;
         private IMapper _mapper;
         private readonly SucursalDomain _sucursalDomain;
-        public SucursalService(UnitOfWorkBuilder unitOfWorkBuilder, IMapper mapper)
+        public SucursalService(UnitOfWorkBuilder unitOfWorkBuilder, IMapper mapper, SucursalDomain sucursalDomain)
         {
             _unitOfWork = unitOfWorkBuilder.BuilderRentas();
             _mapper = mapper;
+            _sucursalDomain = sucursalDomain;
         }
         public Respuesta<List<ObtenerSucursalDTO>> ObtenerSucursales(int pagina, int tamanoPagina)
         {
             try
             {
-                int skip = PaginacionHelper.CalcularSkip(pagina, tamanoPagina);
 
-                IQueryable<Sucursal> query = ConstruirQuerySucursales()
-                    .Skip(skip)
-                    .Take(tamanoPagina);
+                List<Sucursal> sucursales = _unitOfWork.Repository<Sucursal>()
+                .AsQueryable()
+                .Include(x => x.Proveedor)
+                .Include(x => x.Contrato)
+                .Where(x => x.Activo)
+                .OrderBy(x => x.SucursalID).AsNoTracking().ToList();
 
-                List<Sucursal> sucursales = query.ToList();
 
                 List<ObtenerSucursalDTO> sucursalesDto =
                     _mapper.Map<List<ObtenerSucursalDTO>>(sucursales);
@@ -44,17 +47,18 @@ namespace Academia.WebRentas.WebApi._Features.Sucursales
                 return Respuesta.Success(
                     sucursalesDto,
                     Exito.OperacionExitosa,
-                    EnumMensajesError.Succes.ToString()
+                    ((int)EnumMensajesError.Succes).ToString() 
                 );
             }
             catch (Exception)
             {
                 return Respuesta.Fault<List<ObtenerSucursalDTO>>(
                     Fallo.OperacionFallida,
-                    EnumMensajesError.InternarServerError.ToString()
+                    ((int)EnumMensajesError.InternarServerError).ToString() 
                 );
             }
         }
+
 
         public Respuesta<InsertarSucursalDto> InsertarSucursal(InsertarSucursalDto insertarSucursalDto)
         {
@@ -63,6 +67,16 @@ namespace Academia.WebRentas.WebApi._Features.Sucursales
                 Sucursal sucursal = _mapper.Map<Sucursal>(insertarSucursalDto);
 
                 SucursalDomainRequirement requirements = CrearRequisitosSucursal(insertarSucursalDto);
+
+                if (_sucursalDomain == null)
+                    throw new Exception("_sucursalDomain es null");
+
+                if (sucursal == null)
+                    throw new Exception("sucursal es null");
+
+                if (requirements == null)
+                    throw new Exception("requirements es null");
+
 
                 Respuesta<Sucursal> validacion = _sucursalDomain.ValidarSucursal(sucursal, requirements);
 
@@ -120,7 +134,7 @@ namespace Academia.WebRentas.WebApi._Features.Sucursales
 
                 SucursalDomainRequirement requirements = CrearRequisitosSucursalActualizar(actualizarSucursalDto);
 
-                Respuesta<Sucursal> validacionDominio = _sucursalDomain.ValidarSucursal(sucursal, requirements);
+                var validacionDominio = _sucursalDomain.ValidarSucursal(sucursal, requirements);
 
                 if (!validacionDominio.Ok)
                 {

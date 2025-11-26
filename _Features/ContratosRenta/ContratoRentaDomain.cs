@@ -13,8 +13,8 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
         {
             List<string> errores = new List<string>();
 
-            DateTime fechaAntiguedadLimite = DateTime.Today.AddYears(-3);
-            DateTime fechaFuturaLimite = DateTime.Today.AddYears(10);
+            DateOnly fechaAntiguedadLimite = DateOnly.FromDateTime(DateTime.Today).AddYears(-3);
+            DateOnly fechaFuturaLimite = DateOnly.FromDateTime(DateTime.Today).AddYears(10);
 
             if (!contratoRentaDomainRequirement.EsValido())
             {

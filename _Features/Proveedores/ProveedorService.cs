@@ -1,35 +1,58 @@
-﻿using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
+﻿using Academia.WebRentas.WebApi._Common;
+using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
+using Academia.WebRentas.WebApi._Common.ProveedorDto;
+using Academia.WebRentas.WebApi._Common.Service;
+using Academia.WebRentas.WebApi.Infrastructure;
+using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
+using AutoMapper;
+using Farsiman.Application.Core.Standard.DTOs;
+using Farsiman.Domain.Core.Standard.Repositories;
 using Farsiman.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
+using static Academia.WebRentas.WebApi._Common.Mensajes;
 
 namespace Academia.WebRentas.WebApi._Features.Proveedores
 {
     [ExcludeFromCodeCoverage]
-    public class ProveedorService
+    public class ProveedorService : IProveedor
     {
-        
 
-        private readonly BDRentasContext _bdRenta;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public ProveedorService(BDRentasContext bdRenta)
+        public ProveedorService(UnitOfWorkBuilder unitOfWorkBuilder, IMapper mapper)
         {
-            _bdRenta = bdRenta;
+            _unitOfWork = unitOfWorkBuilder.BuilderRentas();
+            _mapper = mapper;
         }
-        public List<Proveedor> ObtenerProveedores()
+        public Respuesta<List<ObtenerProveedorDto>> ObtenerProveedor()
         {
             try
             {
-                List<Proveedor> proveedores = _bdRenta.Proveedores.AsQueryable().AsNoTracking().ToList();
-                return proveedores;
-            }
-            catch (Exception ex)
-            {
 
-                throw new FsDataTransferObjectNullException("Error al mostrar la lista. " + ex.Message);
+                List<Proveedor> proveedor = _unitOfWork.Repository<Proveedor>()
+                .AsQueryable()
+                .Include(x => x.Moneda)
+                .Where(x => x.Activo)
+                .OrderBy(x => x.ProveedorID).AsNoTracking().ToList();
+
+
+                List<ObtenerProveedorDto> obtenerProveedorDtos =
+                    _mapper.Map<List<ObtenerProveedorDto>>(proveedor);
+
+
+                return Respuesta.Success(
+                    obtenerProveedorDtos,
+                    Exito.OperacionExitosa,
+                    ((int)EnumMensajesError.Succes).ToString()
+                );
+            }
+            catch (Exception)
+            {
+                return Respuesta.Fault<List<ObtenerProveedorDto>>(Fallo.OperacionFallida, ((int)EnumMensajesError.InternarServerError).ToString());
             }
         }
     }
-
 }

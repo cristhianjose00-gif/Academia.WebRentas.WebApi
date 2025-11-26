@@ -1,6 +1,7 @@
 ﻿using Academia.WebRentas.WebApi._Common;
 using Academia.WebRentas.WebApi._Common.DomainRequirement;
 using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
+using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi.Infrastructure;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
@@ -26,24 +27,28 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
             _mapper = mapper;
             _rentaDomain = contratoRentaDomain;
         }
-        public Respuesta<List<ObtenerContratoDto>> ObtenerContratoRenta(int pagina, int tamanoPagina)
+        public Respuesta<List<ObtenerContratoDto>> ObtenerContratoRenta()
         {
             try
             {
 
-                int skip = PaginacionHelper.CalcularSkip(pagina, tamanoPagina);
+                List<ContratoRenta> contratoRenta = _unitOfWork.Repository<ContratoRenta>()
+                .AsQueryable()
+                .Include(x => x.Moneda)
+                .Include(x => x.Proveedor)
+                .Where(x => x.Activo)
+                .OrderBy(x => x.ContratoID).AsNoTracking().ToList();
 
 
-                IQueryable<ContratoRenta> query = ConstruirQueryContratos()
-                   .Skip(skip)
-                   .Take(tamanoPagina);
-
-                List<ContratoRenta> contratoRentas = query.ToList();
-
-                List<ObtenerContratoDto> contratoRentasDto = _mapper.Map<List<ObtenerContratoDto>>(contratoRentas);
+                List<ObtenerContratoDto> obtenerContratoDtos =
+                    _mapper.Map<List<ObtenerContratoDto>>(contratoRenta);
 
 
-                return Respuesta.Success(contratoRentasDto, Exito.OperacionExitosa, EnumMensajesError.Succes.ToString());
+                return Respuesta.Success(
+                    obtenerContratoDtos,
+                    Exito.OperacionExitosa,
+                    ((int)EnumMensajesError.Succes).ToString()
+                );
             }
             catch (Exception )
             {
@@ -154,7 +159,8 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                         ((int)EnumMensajesError.BadRequest).ToString()
                     );
 
-                ContratoRenta? contrato = validacion.Data!;
+                ContratoRenta contratoRenta = validacion.Data!;
+                contratoRenta.Activo = false;
 
                 if (!_unitOfWork.SaveChanges())
                     return Respuesta.Fault<InactivarContratoDto>(

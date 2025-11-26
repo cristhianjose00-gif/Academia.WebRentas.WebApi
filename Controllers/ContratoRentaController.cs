@@ -27,12 +27,7 @@ namespace Academia.WebRentas.WebApi.Controllers
         {
             const int tamanoPaginaFijo = 10;
 
-            Respuesta<List<ObtenerContratoDto>> respuestaPaginada = _service.ObtenerContratoRenta(pagina, tamanoPaginaFijo);
-
-            if (respuestaPaginada.Ok)
-            {
-                return Ok(respuestaPaginada.Data);
-            }
+            var respuestaPaginada = _service.ObtenerContratoRenta();
 
             return this.ActionResultFrom(respuestaPaginada);
         }
@@ -55,7 +50,7 @@ namespace Academia.WebRentas.WebApi.Controllers
             return this.ActionResultFrom(resultado);
         }
 
-        [HttpPut("InactivarContrato")]
+        [HttpPatch("InactivarContrato")]
         public IActionResult InactivarContrato([FromQuery] int contratoId)
         {
             InactivarContratoDto inactivarContratoDto = new InactivarContratoDto
@@ -67,9 +62,6 @@ namespace Academia.WebRentas.WebApi.Controllers
 
             return this.ActionResultFrom(resultado);
         }
-
-
-
 
     }
 

@@ -1,4 +1,6 @@
-﻿using Academia.WebRentas.WebApi._Features.Proveedores;
+﻿using Academia.WebRentas.WebApi._Common;
+using Academia.WebRentas.WebApi._Common.Service;
+using Academia.WebRentas.WebApi._Features.Proveedores;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics.CodeAnalysis;
 
@@ -9,18 +11,18 @@ namespace Academia.WebRentas.WebApi.Controllers
     [ApiController]
     public class ProveedorController : ControllerBase
     {
-        private readonly ProveedorService _service;
+        private readonly IProveedor _service;
         public ProveedorController(ProveedorService service)
         {
             _service = service;
         }
-        [HttpGet("ObtenerProveedores")]
-
-        public IActionResult ObtenerProveedores()
+        [HttpGet("ObtenerProveedor")]
+        public IActionResult ObtenerProveedor()
         {
-
-            return Ok(_service.ObtenerProveedores());
+            var respuesta = _service.ObtenerProveedor();
+            return this.ActionResultFrom(respuesta);
         }
+
 
     }
 }

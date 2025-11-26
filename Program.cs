@@ -7,6 +7,7 @@ using Academia.WebRentas.WebApi._Features.Servicios;
 using Academia.WebRentas.WebApi._Features.Sucursales;
 using Academia.WebRentas.WebApi.Infrastructure;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
+using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Extensions.Configuration;
 using Farsiman.Infraestructure.Core.AspNetCore.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +61,8 @@ builder.Services.AddTransient<SucursalService>();
 builder.Services.AddTransient<IContratoRenta, ContratoRentaService>();
 builder.Services.AddTransient<ISucursal, SucursalService>();
 builder.Services.AddTransient<ContratoRentaDomain>();
+builder.Services.AddTransient<SucursalDomain>();
+
 
 var app = builder.Build();
 

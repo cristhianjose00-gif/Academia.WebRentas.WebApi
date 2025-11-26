@@ -26,28 +26,29 @@ namespace Academia.WebRentas.WebApi.Controllers
             return Ok(_service.ObtenerMonedas());
         }
 
-        [HttpGet("ObtenerColaboradores")]
+        //[HttpGet("ObtenerColaboradores")]
 
-        public IActionResult ObtenerColaboradores()
-        {
+        //    public IActionResult ObtenerColaboradores()
+        //    {
 
-            return Ok(_service.ObtenerColaboradores());
-        }
-        [HttpGet("ObtenerTasasDeCambio")]
+        //        return Ok(_service.ObtenerColaboradores());
+        //    }
+        //    [HttpGet("ObtenerTasasDeCambio")]
 
-        public IActionResult ObtenerTasasDeCambio()
-        {
+        //    public IActionResult ObtenerTasasDeCambio()
+        //    {
 
-            return Ok(_service.ObtenerTasasDeCambio());
-        }
-        [HttpGet("ObtenerDocumentos")]
+        //        return Ok(_service.ObtenerTasasDeCambio());
+        //    }
+        //    [HttpGet("ObtenerDocumentos")]
 
-        public IActionResult ObtenerDocumentos()
-        {
+        //    public IActionResult ObtenerDocumentos()
+        //    {
 
-            return Ok(_service.ObtenerDocumento());
-        }
+        //        return Ok(_service.ObtenerDocumento());
+        //    }
 
+        //}
     }
 
 

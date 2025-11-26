@@ -1,5 +1,7 @@
 ﻿using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
+using Academia.WebRentas.WebApi._Common.Dtos.MonedaDto;
 using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
+using Academia.WebRentas.WebApi._Common.ProveedorDto;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using AutoMapper;
 using System.Diagnostics.CodeAnalysis;
@@ -20,11 +22,19 @@ namespace Academia.WebRentas.WebApi._Common
             .ForMember(dest => dest.Activo, opt => opt.MapFrom(src => true));
 
             CreateMap<ActualizarSucursalDto, Sucursal>();
-            CreateMap<InsertarSucursalDto, Sucursal>();
+            CreateMap<InsertarSucursalDto, Sucursal>()
+                .ForMember(dest => dest.Activo, opt => opt.MapFrom(src => true))
+                .ForMember(dest => dest.FechaAgrega, opt => opt.MapFrom(src => DateTime.Now));
             CreateMap<Sucursal, ObtenerSucursalDTO>()
           .ForMember(dest => dest.NombreProveedor, opt => opt.MapFrom(x => x.Proveedor != null ? x.Proveedor.NombreDeProveedor : null))
           .ForMember(dest => dest.NumeroContrato, opt => opt.MapFrom(x => x.Contrato != null ? x.Contrato.NumeroContrato : null))
           .ReverseMap();
+
+            CreateMap<Proveedor, ObtenerProveedorDto>()
+              .ForMember(entidadDto => entidadDto.NombreMoneda, entidad => entidad.MapFrom(x => x.Moneda.NombreMoneda)).ReverseMap();
+
+            CreateMap<Moneda, ObtenerMonedaDto>()
+              .ForMember(entidadDto => entidadDto.TasaDeCambioID, entidad => entidad.MapFrom(x => x.TasaDeCambio.TasaID)).ReverseMap();
         }
     }
 }
