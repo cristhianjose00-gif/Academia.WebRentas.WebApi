@@ -3,7 +3,6 @@ using Academia.WebRentas.WebApi._Common.DomainRequirement;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Application.Core.Standard.DTOs;
 using static Academia.WebRentas.WebApi._Common.Mensajes;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Academia.WebRentas.WebApi._Features.ContratosRenta
 {

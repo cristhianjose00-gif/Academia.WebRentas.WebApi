@@ -1,11 +1,9 @@
 ﻿using Academia.WebRentas.WebApi._Common.Dtos.MonedaDto;
 using Academia.WebRentas.WebApi.Infrastructure;
-using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using AutoMapper;
 using Farsiman.Application.Core.Standard.DTOs;
 using Farsiman.Domain.Core.Standard.Repositories;
-using Farsiman.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
 using static Academia.WebRentas.WebApi._Common.Mensajes;
@@ -31,7 +29,7 @@ namespace Academia.WebRentas.WebApi._Common
                 List<Moneda> monedas = _unitOfWork.Repository<Moneda>()
                     .AsQueryable()
                     .Include(x => x.TasaDeCambio)
-                    .Where(x => x.Activo) 
+                    .Where(x => x.Activo)
                     .OrderBy(x => x.MonedaID)
                     .AsNoTracking()
                     .ToList();

@@ -15,7 +15,7 @@ namespace Academia.WebRentas.WebApi.Controllers
         {
             _service = service;
         }
-        
+
 
         [HttpGet("ObtenerPagosRenta")]
 

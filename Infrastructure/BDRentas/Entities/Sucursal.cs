@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities
+﻿namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities
 {
     public class Sucursal
     {
@@ -28,7 +26,7 @@ namespace Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities
 
         public virtual Proveedor Proveedor { get; set; } = null!;
 
-    
+
     }
 }
 

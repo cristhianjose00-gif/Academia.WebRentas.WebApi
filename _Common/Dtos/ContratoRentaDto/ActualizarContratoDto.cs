@@ -6,7 +6,7 @@ namespace Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto
 
     public class ActualizarContratoDto
     {
-        public int ContratoID { get; set; } 
+        public int ContratoID { get; set; }
         public int? ProveedorID { get; set; }
         public int? MonedaID { get; set; }
         public string? NumeroContrato { get; set; } = null!;

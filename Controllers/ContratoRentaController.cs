@@ -2,7 +2,6 @@
 using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi._Features.ContratosRenta;
-using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Application.Core.Standard.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics.CodeAnalysis;
@@ -22,7 +21,7 @@ namespace Academia.WebRentas.WebApi.Controllers
         #region ObtenerContrato
         [HttpGet("ObtenerContratosRenta")]
         public IActionResult ObtenerContratosRenta(
-           [FromQuery] int pagina = 1 
+           [FromQuery] int pagina = 1
        )
         {
             const int tamanoPaginaFijo = 10;

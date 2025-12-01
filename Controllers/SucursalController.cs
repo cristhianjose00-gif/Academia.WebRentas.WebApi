@@ -18,7 +18,7 @@ namespace Academia.WebRentas.WebApi.Controllers
             _service = service;
         }
         [HttpGet("ObtenerSucursales")]
-        public IActionResult ObtenerSucursales([FromQuery] int pagina = 1)  
+        public IActionResult ObtenerSucursales([FromQuery] int pagina = 1)
         {
             const int tamanoPaginaFijo = 10;
 

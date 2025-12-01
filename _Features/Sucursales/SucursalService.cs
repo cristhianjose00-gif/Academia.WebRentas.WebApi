@@ -2,14 +2,11 @@
 using Academia.WebRentas.WebApi._Common.DomainRequirement;
 using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
 using Academia.WebRentas.WebApi._Common.Service;
-using Academia.WebRentas.WebApi._Features.ContratosRenta;
 using Academia.WebRentas.WebApi.Infrastructure;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using AutoMapper;
 using Farsiman.Application.Core.Standard.DTOs;
 using Farsiman.Domain.Core.Standard.Repositories;
-using Farsiman.Infraestructure.Core.Entity.Standard;
-using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
 using static Academia.WebRentas.WebApi._Common.Mensajes;
@@ -47,14 +44,14 @@ namespace Academia.WebRentas.WebApi._Features.Sucursales
                 return Respuesta.Success(
                     sucursalesDto,
                     Exito.OperacionExitosa,
-                    ((int)EnumMensajesError.Succes).ToString() 
+                    ((int)EnumMensajesError.Succes).ToString()
                 );
             }
             catch (Exception)
             {
                 return Respuesta.Fault<List<ObtenerSucursalDTO>>(
                     Fallo.OperacionFallida,
-                    ((int)EnumMensajesError.InternarServerError).ToString() 
+                    ((int)EnumMensajesError.InternarServerError).ToString()
                 );
             }
         }

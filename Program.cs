@@ -7,7 +7,6 @@ using Academia.WebRentas.WebApi._Features.Servicios;
 using Academia.WebRentas.WebApi._Features.Sucursales;
 using Academia.WebRentas.WebApi.Infrastructure;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas;
-using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
 using Farsiman.Extensions.Configuration;
 using Farsiman.Infraestructure.Core.AspNetCore.Extensions;
 using Microsoft.EntityFrameworkCore;

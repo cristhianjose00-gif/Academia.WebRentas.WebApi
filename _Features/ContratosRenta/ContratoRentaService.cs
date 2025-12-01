@@ -1,7 +1,6 @@
 ﻿using Academia.WebRentas.WebApi._Common;
 using Academia.WebRentas.WebApi._Common.DomainRequirement;
 using Academia.WebRentas.WebApi._Common.Dtos.ContratoRentaDto;
-using Academia.WebRentas.WebApi._Common.Dtos.SucursalDto;
 using Academia.WebRentas.WebApi._Common.Service;
 using Academia.WebRentas.WebApi.Infrastructure;
 using Academia.WebRentas.WebApi.Infrastructure.BDRentas.Entities;
@@ -17,7 +16,7 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
     [ExcludeFromCodeCoverage]
     public class ContratoRentaService : IContratoRenta
     {
-        
+
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ContratoRentaDomain _rentaDomain;
@@ -50,12 +49,12 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
                     ((int)EnumMensajesError.Succes).ToString()
                 );
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return Respuesta.Fault<List<ObtenerContratoDto>>(Fallo.OperacionFallida, EnumMensajesError.InternarServerError.ToString());
             }
         }
-        
+
         public Respuesta<InsertarContratoDto> InsertarContrato(InsertarContratoDto insertarContratoDto)
         {
             try
@@ -86,7 +85,7 @@ namespace Academia.WebRentas.WebApi._Features.ContratosRenta
 
                 return Respuesta.Success(insertarContratoDto, Exito.Creado, ((int)EnumMensajesError.Succes).ToString());
             }
-            catch (Exception ) 
+            catch (Exception)
             {
 
                 return Respuesta.Fault<InsertarContratoDto>(
